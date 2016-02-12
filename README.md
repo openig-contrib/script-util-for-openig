@@ -10,7 +10,7 @@ Open the script with your favorite editor and modify the configuration fields ac
 generally at the top of the file)
 ```// CONFIGURATION (Update it if necessary)```
 
-For grrovy script, run the script with the command: ```groovy```
+For groovy script, run the script with the command: ```groovy```
 
 example: ```groovy openig-824-openam-configuration.groovy```
 
