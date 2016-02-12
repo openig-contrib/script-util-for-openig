@@ -1,7 +1,8 @@
-import groovyx.net.http.HTTPBuilder
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
+import static groovyx.net.http.ContentType.JSON
+import static groovyx.net.http.Method.POST
+
 import groovyx.net.http.*
-import static groovyx.net.http.ContentType.*
-import static groovyx.net.http.Method.*
 
 // -----------------------------------------------------------------------------------------------------
 // This script is use to configure your OPENAM - Creating an application and a policy
@@ -11,6 +12,7 @@ import static groovyx.net.http.Method.*
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
+
 def user = "amadmin"
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
@@ -18,14 +20,14 @@ def resourceToProtect = "http://localhost:8082/pep-policy-attributes" // Your Op
 
 // EXAMPLE CONFIGURATION 
 // -----------------------------------------------------------------------------------------------------
+
 def applicationName = "pep-application-attributes"
 def policyName = "pep-attributes-policy"
 def description = "An example for OpenIG-824 - policy enforcement filter attributes"
-// -----------------------------------------------------------------------------------------------------
-// START
-// -----------------------------------------------------------------------------------------------------
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 def SSOToken;
 // Request to get an SSOToken
 def http = new HTTPBuilder("${openamurl}/json/authenticate")
