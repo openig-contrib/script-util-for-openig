@@ -1,14 +1,16 @@
-openam-scripts-for-ig
+script-util-for-openig
 ======
 
-This repo contains groovy scripts to configure quickly OpenAM-13, to be able to test samples provided by the OpenIG team.
+This repository contains scripts to help you to test easily the OpenIG examples.  
 
-How to use the script
+How to use the scripts
 =============
 
-Open the script with your favorite editor and modify the configuration fields according to your configuration. 
+Open the script with your favorite editor and modify the configuration fields according to your configuration (these fields are
+generally at the top of the file)
 ```// CONFIGURATION (Update it if necessary)```
 
-Run the script with the command: ```groovy```
+For grrovy script, run the script with the command: ```groovy```
+
 example: ```groovy openig-824-openam-configuration.groovy```
 
