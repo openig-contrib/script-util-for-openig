@@ -21,7 +21,7 @@ def resourceToProtect = "http://localhost:8082/pep-policy-attributes" // Your Op
 // EXAMPLE CONFIGURATION 
 // -----------------------------------------------------------------------------------------------------
 
-def applicationName = "pep-application-attributes"
+def applicationName = "pep-attributes-application"
 def policyName = "pep-attributes-policy"
 def description = "An example for OpenIG-824 - policy enforcement filter attributes"
 
