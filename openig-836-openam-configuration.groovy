@@ -17,7 +17,7 @@ import groovyx.net.http.*
 def user = "amadmin"
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def resourceToProtect = "http://localhost:8082/pep-advices" // Your OpenIG URL resource
+def resourceToProtect = "http://localhost:8081/pep-advices"
 
 // EXAMPLE CONFIGURATION 
 // -----------------------------------------------------------------------------------------------------
