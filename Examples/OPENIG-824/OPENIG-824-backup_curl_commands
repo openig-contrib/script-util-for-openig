@@ -149,35 +149,15 @@ http://localhost:8090/openam/json/policies?_action=evaluate
 <<<< SHOULD RETURN: 
 
 [{
-	"advices": {},curl \
- --request POST \
- --header "iPlanetDirectoryPro: AQIC5wM2LY4SfczsFGOUie6YBc93raec40Z2zYlqzTukqNA.*AAJTSQACMDEAAlNLABMxMjA5NDY2MjI1MDg3NzAwOTcyAAJTMQAA*" \
- --header "Content-Type: application/json" \
- --data '{
+	"advices": {},
     "resources": [
         "http://localhost:8082/pep"
     ]
 	"ttl": 9223372036854775807,
-	"resource": "http://localhost:8082/my-bad-url-policy-attributes",
+	"resource": "http://localhost:8082/pep",
 	"actions": {},
 	"attributes": {}
 }]
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-
-curl \
- --request POST \
- --header "iPlanetDirectoryPro: AQIC5wM2LY4SfczK3CH66aq1in1fMY8XblBd6goOXxpxGnk.*AAJTSQACMDEAAlNLABQtNjQ2NDY1NzQ3ODQ5OTkyMjg4NQACUzEAAA..*" \
- --header "Content-Type: application/json" \
- --data '{
-	"resources": ["http://localhost:8088/pep-policy-attributes"],
-	"subject": {
-		"ssoToken": "AQIC5wM2LY4SfczR81m_HrFrL2_oL7ga58xvabAq2p-SBm4.*AAJTSQACMDEAAlNLABMtODI5MDY3NTY2NjA2NDg5MDE1AAJTMQAA*"
-	},
-	"application": "pep-application-attributes"
-}' \
-http://localhost:8090/openam/json/policies?_action=evaluate
 
 
 
