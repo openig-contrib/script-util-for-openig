@@ -62,7 +62,7 @@ http.request(POST, JSON) { req ->
         println(json)
     }
 
-    response.failure = { resp -> 
+    response.failure = { resp ->
         println()
         println "(DEBUG)Unable to create user: ${resp.entity.content.text}" }
 }
@@ -141,7 +141,7 @@ http.request(POST, JSON) { req ->
         println(json)
     }
 
-    response.failure = { resp -> \
+    response.failure = { resp ->
         println()
         println "(DEBUG)Create application: ${resp.entity.content.text}" }
 }
@@ -177,7 +177,7 @@ http.request(POST, JSON) { req ->
         println(json)
     }
 
-    response.failure = { resp -> 
+    response.failure = { resp ->
         println()
         println "(DEBUG)Create policy: ${resp.entity.content.text}" }
 }
