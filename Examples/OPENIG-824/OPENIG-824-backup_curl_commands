@@ -1,0 +1,185 @@
+
+----------------------------------------------------------------------------------------------------------------------------------------
+>>>> GENERATE SSO TOKEN FOR SPECIFIED USER
+----------------------------------------------------------------------------------------------------------------------------------------
+curl \
+ --request POST \
+ --header "X-OpenAM-Username: policyAdmin" \
+ --header "X-OpenAM-Password: password" \
+ --header "Content-Type: application/json" \
+ --data "{}" \
+  http://localhost:8090/openam/json/authenticate
+  
+----------------------------------------------------------------------------------------------------------------------------------------
+>>>> CREATING APPLICATION
+----------------------------------------------------------------------------------------------------------------------------------------
+curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfcxKfXmv9zFJkcn56lvAe0hwvrozQezdEPY.*AAJTSQACMDEAAlNLABQtMTA1MjA3NDI1Mzc1MTM3NTcxNwACUzEAAA..*" \
+ --header "Content-Type: application/json" \
+ --data '{
+    "name": "pep-application-attributes",
+    "realm": "/",
+    "conditions": [
+        "AND",
+        "OR",
+        "NOT",
+        "AMIdentityMembership",
+        "AuthLevel",
+        "AuthScheme",
+        "AuthenticateToRealm",
+        "AuthenticateToService",
+        "IPv4",
+        "IPv6",
+        "LDAPFilter",
+        "LEAuthLevel",
+        "OAuth2Scope",
+        "ResourceEnvIP",
+        "Session",
+        "SessionProperty",
+        "SimpleTime"
+    ],
+    "subjects": [
+        "AND",
+        "OR",
+        "NOT",
+        "AuthenticatedUsers",
+        "Identity",
+        "JwtClaim"
+    ],
+    "applicationType": "iPlanetAMWebAgentService",
+    "description": "An example application for OpenIG-824 - policy enforcement filter attributes",
+    "resourceComparator": "com.sun.identity.entitlement.URLResourceName",
+    "entitlementCombiner": "DenyOverride",
+    "saveIndex": null,
+    "searchIndex": null,
+    "resourceTypeUuids": [
+            "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
+    ]
+}' \
+http://localhost:8090/openam/json/applications/?_action=create
+
+----------------------------------------------------------------------------------------------------------------------------------------
+>>>> CREATING POLICY
+----------------------------------------------------------------------------------------------------------------------------------------
+curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfcxKfXmv9zFJkcn56lvAe0hwvrozQezdEPY.*AAJTSQACMDEAAlNLABQtMTA1MjA3NDI1Mzc1MTM3NTcxNwACUzEAAA..*" \
+ --header "Content-Type: application/json" \
+ --data '{
+    "name": "pep-attributes-policy",
+    "active": true,
+    "description": "This policy should return attributes cn and dn when",
+    "applicationName": "pep-application-attributes",
+    "actionValues": {
+        "POST": true,
+        "GET": true,
+        "PUT": false,
+        "DELETE": true
+    },
+    "resources": [
+        "http://localhost:8082/pep-policy-attributes"
+    ],     
+    "subject": {
+        "type": "AuthenticatedUsers"
+    },
+    "resourceAttributes": [
+        {
+            "type": "User",
+            "propertyName": "dn"
+        },
+        {
+            "type": "User",
+            "propertyName": "cn"
+        }
+    ],
+    "resourceTypeUuid": "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
+ }' \
+ http://localhost:8090/openam/json/policies?_action=create
+
+----------------------------------------------------------------------------------------------------------------------------------------
+>>>> CHECK POLICY OK
+----------------------------------------------------------------------------------------------------------------------------------------
+
+curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfcyGw2RP4r6GwkMh3wfz0WnLkqpg7VImpx0.*AAJTSQACMDEAAlNLABQtMTcwNzE2MTUyMzI3ODczNzM2MwACUzEAAA..*" \
+ --header "Content-Type: application/json" \
+ --data '{
+    "resources": [
+        "http://localhost:8082/pep-policy-attributes"
+    ],
+    "application": "pep-application-attributes"
+ }' \
+http://localhost:8090/openam/json/policies?_action=evaluate
+
+<<<< SHOULD RETURN:
+
+[{
+	"advices": {},
+	"ttl": 9223372036854775807,
+	"resource": "http://localhost:8082/pep-policy-attributes",
+	"actions": {
+		"DELETE": true,
+		"POST": true,
+		"PUT": false,
+		"GET": true
+	},
+	"attributes": {
+		"dn": ["uid=amAdmin,ou=people,dc=openam,dc=forgerock,dc=org"],
+		"cn": ["amAdmin"]
+	}
+}]
+
+----------------------------------------------------------------------------------------------------------------------------------------
+>>>> CHECK POLICY KO on OUT OF THE BOX URL(Not covered by the policy which denies access --> notice that attributes are empty.)
+----------------------------------------------------------------------------------------------------------------------------------------
+
+curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfczsFGOUie6YBc93raec40Z2zYlqzTukqNA.*AAJTSQACMDEAAlNLABMxMjA5NDY2MjI1MDg3NzAwOTcyAAJTMQAA*" \
+ --header "Content-Type: application/json" \
+ --data '{
+    "resources": [
+        "http://localhost:8082/pep"
+    ]
+ }' \
+http://localhost:8090/openam/json/policies?_action=evaluate
+
+<<<< SHOULD RETURN: 
+
+[{
+	"advices": {},curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfczsFGOUie6YBc93raec40Z2zYlqzTukqNA.*AAJTSQACMDEAAlNLABMxMjA5NDY2MjI1MDg3NzAwOTcyAAJTMQAA*" \
+ --header "Content-Type: application/json" \
+ --data '{
+    "resources": [
+        "http://localhost:8082/pep"
+    ]
+	"ttl": 9223372036854775807,
+	"resource": "http://localhost:8082/my-bad-url-policy-attributes",
+	"actions": {},
+	"attributes": {}
+}]
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+curl \
+ --request POST \
+ --header "iPlanetDirectoryPro: AQIC5wM2LY4SfczK3CH66aq1in1fMY8XblBd6goOXxpxGnk.*AAJTSQACMDEAAlNLABQtNjQ2NDY1NzQ3ODQ5OTkyMjg4NQACUzEAAA..*" \
+ --header "Content-Type: application/json" \
+ --data '{
+	"resources": ["http://localhost:8088/pep-policy-attributes"],
+	"subject": {
+		"ssoToken": "AQIC5wM2LY4SfczR81m_HrFrL2_oL7ga58xvabAq2p-SBm4.*AAJTSQACMDEAAlNLABMtODI5MDY3NTY2NjA2NDg5MDE1AAJTMQAA*"
+	},
+	"application": "pep-application-attributes"
+}' \
+http://localhost:8090/openam/json/policies?_action=evaluate
+
+
+
+
+

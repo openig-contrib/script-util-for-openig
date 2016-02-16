@@ -16,7 +16,7 @@ import groovyx.net.http.*
 def user = "amadmin"
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def resourceToProtect = "http://localhost:8081/pep-policy-attributes"
+def resourceToProtect = "http://localhost:8082/pep-policy-attributes"
 
 // EXAMPLE CONFIGURATION 
 // -----------------------------------------------------------------------------------------------------
