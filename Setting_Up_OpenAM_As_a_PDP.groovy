@@ -30,7 +30,7 @@ def description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
 def SSOToken;
 // Request to get an SSOToken
 def http = new HTTPBuilder("${openamurl}/json/authenticate")
-http.request(POST,JSON) { req ->
+http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
     headers.'Content-Type' = 'application/json'
@@ -43,6 +43,49 @@ http.request(POST,JSON) { req ->
     }
 
     response.failure = { resp -> println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }
+}
+
+// Create a user
+http = new HTTPBuilder("${openamurl}/json/users/?_action=create")
+http.request(POST, JSON) { req ->
+    headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Content-Type' = 'application/json'
+    requestContentType = ContentType.JSON
+    body = """{ 
+                "username" : "policyAdmin", 
+                "userpassword": "password", 
+                "mail": "policyAdmin@example.com" 
+           }"""
+
+    response.success = { resp, json ->
+        println()
+        println(json)
+    }
+
+    response.failure = { resp -> 
+        println()
+        println "(DEBUG)Unable to create user: ${resp.entity.content.text}" }
+}
+
+// Create a group
+http = new HTTPBuilder("${openamurl}/json/groups?_action=create")
+http.request(POST, JSON) { req ->
+    headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Content-Type' = 'application/json'
+    requestContentType = ContentType.JSON
+    body = """{
+                "username":"policyAdmins",
+                "uniquemember":["uid=policyAdmin,ou=people,dc=openam,dc=forgerock,dc=org"]
+           }"""
+
+    response.success = { resp, json ->
+        println()
+        println(json)
+    }
+
+    response.failure = { resp ->
+        println()
+        println "(DEBUG)Unable to create group: ${resp.entity.content.text}" }
 }
 
 // Creates the application|policy set
@@ -94,10 +137,13 @@ http.request(POST, JSON) { req ->
             }"""
 
     response.success = { resp, json ->
+        println()
         println(json)
     }
 
-    response.failure = { resp -> println "(DEBUG)Create application: ${resp.entity.content.text}" }
+    response.failure = { resp -> \
+        println()
+        println "(DEBUG)Create application: ${resp.entity.content.text}" }
 }
 
 // Creates the policy
@@ -127,8 +173,11 @@ http.request(POST, JSON) { req ->
             }"""
 
     response.success = { resp, json ->
+        println()
         println(json)
     }
 
-    response.failure = { resp -> println "(DEBUG)Create policy: ${resp.entity.content.text}" }
+    response.failure = { resp -> 
+        println()
+        println "(DEBUG)Create policy: ${resp.entity.content.text}" }
 }
