@@ -3,8 +3,8 @@ OPENIG-824 Complete Policy Enforcement Filter with "attributes" and "advices"
 This is a very basic example to see how to retrieve attributes returned by a policy decision.
 -------
 
-**STEP-1**: Open and EDIT the groovy script configuration to configure your OpenAM. Then launch it with:
-        '`$ groovy openig-824-pep-attributes.groovy'`
+**STEP-1**: Open and EDIT the groovy script configuration to configure your OpenAM. Then launch it with: <br>
+        '`$ groovy openig-824-openam-configuration.groovy'`
         
 
  - In this sample, the policy that applies to 'http://localhost:8082/pep-policy-attributes' causes that the subject's "cn" and "dn" profile attributes to be returned.
