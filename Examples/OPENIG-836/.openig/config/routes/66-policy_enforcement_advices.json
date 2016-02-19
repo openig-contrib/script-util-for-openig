@@ -1,0 +1,43 @@
+{
+	"handler": {
+		"type": "Chain",
+		"config": {
+			"filters": [{
+				"type": "ScriptableFilter",
+				"config": {
+					"type": "application/x-groovy",
+					"file": "generate_sso_token.groovy"
+				}
+			}, {
+				"type": "ScriptableFilter",
+				"config": {
+					"type": "application/x-groovy",
+					"file": "display_if_401.groovy"
+				}
+			}, {
+				"type": "PolicyEnforcementFilter",
+				"config": {
+					"openamUrl": "http://localhost:8090/openam/",
+					"pepUsername": "${attributes.authorizedPolicyUser}",
+					"pepPassword": "${attributes.authorizedPolicyUserPassword}",
+					"application": "pep-advices-application",
+					"ssoTokenSubject": "${session.ssoTokenSubject}",
+					"target": "${attributes.myPolicyDecision}",
+					"environment": {
+						"DAY_OF_WEEK": [
+							"Saturday"
+						]
+					}
+				}
+			}],
+			"handler": {
+				"type": "ScriptableHandler",
+				"config": {
+					"type": "application/x-groovy",
+					"file": "protected_resource.groovy"
+				}
+			}
+		}
+	},
+	"condition": "${matches(request.uri.path, '/pep-advices')}"
+}

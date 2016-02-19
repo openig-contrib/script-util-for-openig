@@ -1,13 +1,14 @@
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 import static groovyx.net.http.ContentType.JSON
+import static groovyx.net.http.Method.GET
 import static groovyx.net.http.Method.POST
 import org.apache.commons.codec.binary.Base64
 
 import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
-// This script is use to configure your OPENAM - Creating an application/ script and a policy
-// According to OPENIG-836
+// This script is use to configure your OPENAM according to OPENIG-836
+// https://bugster.forgerock.org/jira/browse/OPENIG-836
 // # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
 // # vrom 2016
 // -----------------------------------------------------------------------------------------------------
@@ -17,7 +18,7 @@ import groovyx.net.http.*
 def user = "amadmin"
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def resourceToProtect = "http://localhost:8081/pep-advices"
+def resourceToProtect = "http://localhost:8082/pep-advices"
 
 // EXAMPLE CONFIGURATION 
 // -----------------------------------------------------------------------------------------------------
@@ -45,6 +46,8 @@ http.request(POST,JSON) { req ->
 
     response.failure = { resp -> println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }
 }
+
+println()
 
 // Creates the application|policy set
 http = new HTTPBuilder("${openamurl}/json/applications/?_action=create")
@@ -110,51 +113,72 @@ http.request(POST, JSON) { req ->
     response.failure = { resp -> println "(DEBUG)Create application: ${resp.entity.content.text}" }
 }
 
-// Creates a script
-def encodedScript = """
-if (environment) {
-    var dayOfWeek = environment.get("DAY_OF_WEEK");
-    if (dayOfWeek != null && !dayOfWeek.isEmpty()) {
-        var today = dayOfWeek.iterator().next();
-        if (today === "Saturday" || today === "Sunday") {
-            advice.put("VALID_DAYS_OF_THE_WEEK", ["Mon, Tue, Wed, Thu, Fri"]);
-            authorized = false;
-        } else {
-            authorized = true;
-        }
-    } else {
-        logger.error("No Day of week specified in the evaluation request environment parameters.");
-        authorized = false;
-    }
-} else {
-  logger.error("No environment parameters specified in the evaluation request.");
-  authorized = false;
-}
-""".getBytes().encodeBase64().toString() 
-
+println()
 def scriptId
-http = new HTTPBuilder("${openamurl}/json/scripts/?_action=create")
-http.request(POST,JSON) { req ->
+
+// Checks if the script already exists
+http = new HTTPBuilder("${openamurl}/json/scripts?_queryFilter=name%20eq%20%22${applicationName}-script%22")
+http.request(GET, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
-    requestContentType = ContentType.JSON
-    body = """{
-                "name": "${applicationName}-script",
-                "script": "$encodedScript",
-                "language": "JAVASCRIPT",
-                "context": "POLICY_CONDITION",
-                "description": "A script for ${description}"
-            }
-           """
 
     response.success = { resp, json ->
-        println(json)
-        scriptId = json._id;
+        if(json.result.size() > 0) {
+            scriptId = json.result['_id'].get(0)
+            println("Script '${applicationName}-script' already exists. Using _id='${scriptId}'")            
+            println()
+        }
     }
 
-    response.failure = { resp -> println "(DEBUG)Unable to create the script: ${resp.entity.content.text}" }
+    response.failure = { resp -> println "(DEBUG)Unable to retrieve the script: ${resp.entity.content.text}" }
 }
 
+if(scriptId == null) {
+    // Creates the script
+    def encodedScript = """
+    if (environment) {
+        var dayOfWeek = environment.get("DAY_OF_WEEK");
+        if (dayOfWeek != null && !dayOfWeek.isEmpty()) {
+            var today = dayOfWeek.iterator().next();
+            if (today === "Saturday" || today === "Sunday") {
+                advice.put("VALID_DAYS_OF_THE_WEEK", ["Mon, Tue, Wed, Thu, Fri"]);
+                authorized = false;
+            } else {
+                authorized = true;
+            }
+        } else {
+            logger.error("No Day of week specified in the evaluation request environment parameters.");
+            authorized = false;
+        }
+    } else {
+      logger.error("No environment parameters specified in the evaluation request.");
+      authorized = false;
+    }
+    """.getBytes().encodeBase64().toString()
+
+    http = new HTTPBuilder("${openamurl}/json/scripts/?_action=create")
+    http.request(POST, JSON) { req ->
+        headers.'iPlanetDirectoryPro' = SSOToken
+        headers.'Content-Type' = 'application/json'
+        requestContentType = ContentType.JSON
+        body = """{
+                    "name": "${applicationName}-script",
+                    "script": "$encodedScript",
+                    "language": "JAVASCRIPT",
+                    "context": "POLICY_CONDITION",
+                    "description": "A script for ${description}"
+                  }"""
+
+        response.success = { resp, json ->
+            println(json)
+            scriptId = json._id;
+        }
+
+        response.failure = { resp -> println "(DEBUG)Unable to create the script: ${resp.entity.content.text}" }
+    }
+
+    println()
+}
 //// Creates the policy
 http = new HTTPBuilder("${openamurl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
