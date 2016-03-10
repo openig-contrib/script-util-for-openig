@@ -5,7 +5,6 @@ import static groovyx.net.http.Method.POST
 
 import org.forgerock.http.protocol.Response;
 import org.forgerock.http.protocol.Status
-import org.apache.commons.codec.binary.Base64
 
 import groovyx.net.http.*
 
@@ -22,7 +21,6 @@ attributes.userpass = "secret12"
 // Set the user ALLOWED TO ACCESS to policy decisions. (used in the filter)
 attributes.authorizedPolicyUser = "amadmin"
 attributes.authorizedPolicyUserPassword = "secret12"
-
 
 // -----------------------------------------------------------------------------------------------------
 // Request to get an SSOToken
