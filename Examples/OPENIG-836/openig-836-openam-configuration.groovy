@@ -2,7 +2,6 @@
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.GET
 import static groovyx.net.http.Method.POST
-import org.apache.commons.codec.binary.Base64
 
 import groovyx.net.http.*
 
@@ -25,7 +24,6 @@ def resourceToProtect = "http://localhost:8082/pep-advices"
 def applicationName = "pep-advices-application"
 def policyName = "pep-advices-policy"
 def description = "An example for OpenIG-836 - policy enforcement filter advices/environment"
-
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------

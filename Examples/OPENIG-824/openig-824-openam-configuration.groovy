@@ -24,7 +24,6 @@ def resourceToProtect = "http://localhost:8082/pep-policy-attributes"
 def applicationName = "pep-attributes-application"
 def policyName = "pep-attributes-policy"
 def description = "An example for OpenIG-824 - policy enforcement filter attributes"
-
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
@@ -94,11 +93,14 @@ http.request(POST, JSON) { req ->
                 ]
             }"""
 
-    response.success = { resp, json ->
+    response.success = { resp, json ->        
+        println()
         println(json)
     }
 
-    response.failure = { resp -> println "(DEBUG)Create application: ${resp.entity.content.text}" }
+    response.failure = { resp ->        
+        println()
+        println "(DEBUG)Create application: ${resp.entity.content.text}" }
 }
 
 // Creates the policy
@@ -134,10 +136,13 @@ http.request(POST, JSON) { req ->
                 "resourceTypeUuid": "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
             }"""
 
-    response.success = { resp, json ->
+    response.success = { resp, json ->        
+        println()
         println(json)
     }
 
-    response.failure = { resp -> println "(DEBUG)Create policy: ${resp.entity.content.text}" }
+    response.failure = { resp ->         
+        println()
+        println "(DEBUG)Create policy: ${resp.entity.content.text}" }
 }
 

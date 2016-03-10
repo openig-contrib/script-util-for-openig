@@ -1,7 +1,6 @@
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
-import org.apache.commons.codec.binary.Base64
 
 import groovyx.net.http.*
 
@@ -12,7 +11,6 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
-
 def user = "amadmin"
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
@@ -23,7 +21,6 @@ def resourceToProtect = "http://localhost:8081/pep"
 def applicationName = "iPlanetAMWebAgentService"
 def policyName = "Policy for OpenIG as PEP"
 def description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
-
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
