@@ -1,12 +1,6 @@
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
-
-import static groovyx.net.http.ContentType.JSON
-import static groovyx.net.http.Method.POST
-
 import org.forgerock.http.protocol.Response;
 import org.forgerock.http.protocol.Status
-
-import groovyx.net.http.*
+import groovy.json.JsonSlurper
 
 def session = contexts.session.session
 // -----------------------------------------------------------------------------------------------------
@@ -23,24 +17,19 @@ attributes.authorizedPolicyUser = "amadmin"
 attributes.authorizedPolicyUserPassword = "secret12"
 
 // -----------------------------------------------------------------------------------------------------
-// Request to get an SSOToken
+// We use a curl command to retrieve the SSO token:
 // -----------------------------------------------------------------------------------------------------
 if(!session.containsKey("ssoTokenSubject")) {
-    def http = new HTTPBuilder("${attributes.openamurl}/json/authenticate")
-    http.request(POST,JSON) { req ->
-        headers.'X-OpenAM-Username' = attributes.user
-        headers.'X-OpenAM-Password' = attributes.userpass
-        headers.'Content-Type' = 'application/json'
-        requestContentType = ContentType.JSON
-        body = ''
+    println("Generating a new ssoToken for the subject>>>>")
+    def curl = ["curl", "-k", "-X", "POST", \
+                              "-H", "X-OpenAM-Username: ${attributes.user}", \
+                              "-H", "X-OpenAM-Password: ${attributes.userpass}", \
+                              "-H", "Content-Type: application/json", \
+                              "-d", "{}", "${attributes.openamurl}/json/authenticate"].execute()
 
-        response.success = { resp, json ->
-            println(json)
-            session.put("ssoTokenSubject", json.tokenId);
-        }
-
-        response.failure = { resp -> println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }
-    }
+    def jsonResponseContainingSSOToken = new JsonSlurper().parseText(curl.text);
+    session.put("ssoTokenSubject", jsonResponseContainingSSOToken.tokenId);      
 }
+println("SCRIPT(debug)>> tokenID >> " + session.get("ssoTokenSubject"));
 
 return next.handle(context, request)
