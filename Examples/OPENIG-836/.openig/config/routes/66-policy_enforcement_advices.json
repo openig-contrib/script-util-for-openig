@@ -12,7 +12,7 @@
                 "type": "ScriptableFilter",
                 "config": {
                     "type": "application/x-groovy",
-                    "file": "display_if_401.groovy"
+                    "file": "display_if_403.groovy"
                 }
             }, {
                 "type": "PolicyEnforcementFilter",
