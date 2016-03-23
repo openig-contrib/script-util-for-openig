@@ -1,0 +1,58 @@
+{
+	"handler": {
+		"name": "issuers-router",
+		"type": "Router",
+		"audit": "global",
+		"config": {
+			"directory": "/home/vio/.openig/config/routes/issuers-router"
+		}
+	},
+	"heap": [{
+		"name": "openam",
+		"type": "Issuer",
+		"config": {
+			"wellKnownEndpoint": "http://localhost:8090/openam/oauth2/.well-known/openid-configuration",
+			"supportedDomains": ["irock.*", "iforge.*"]
+		}
+	}, {
+		"name": "google",
+		"type": "Issuer",
+		"config": {
+			"wellKnownEndpoint": "https://accounts.google.com/.well-known/openid-configuration",			
+			"supportedDomains": ["gmail.com", "googlemail.com", "g.com"]
+		}
+	}, {
+		"name": "msn",
+		"type": "Issuer",
+		"config": {
+			"authorizeEndpoint": "https://oauth.live.com/authorize",
+			"tokenEndpoint": "https://oauth.live.com/token",
+			"userInfoEndpoint": "https://apis.live.net/v5.0/me"
+		}
+	}, {
+		"name": "linkedin",
+		"type": "Issuer",
+		"config": {
+			"authorizeEndpoint": "https://www.linkedin.com/uas/oauth2/authorization",
+			"tokenEndpoint": "https://www.linkedin.com/uas/oauth2/accessToken"
+		}
+	}, {
+		"name": "static-openid-failure-handler",
+		"type": "StaticResponseHandler",
+		"config": {
+			"comment": "Trivial failure handler for debugging only",
+			"status": 500,
+			"reason": "Error",
+			"entity": "An error occurred:  ${attributes.openid.error.error_description}
+				(${attributes.openid.error.error})"
+		}
+	}, {
+		"name": "display-user-info-groovy-handler",
+		"type": "ScriptableHandler",
+		"comment": "Displays the user info after logging.",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "forgeshop-loggedin.groovy"
+		}
+	}]
+}

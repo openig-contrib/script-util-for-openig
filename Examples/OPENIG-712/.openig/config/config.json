@@ -1,0 +1,26 @@
+{
+	"handler": {
+		"name": "main-router",
+		"type": "Router",
+		"audit": "global",
+		"baseURI": "http://localhost:8082",
+		"capture": "all"
+	},
+	"heap": [{
+		"name": "LogSink",
+		"type": "ConsoleLogSink",
+		"config": {
+			"level": "DEBUG"
+		}
+	}, {
+		"name": "JwtSession",
+		"type": "JwtSession"
+	}, {
+		"name": "capture",
+		"type": "CaptureDecorator",
+		"config": {
+			"captureEntity": true,
+			"_captureContext": true
+		}
+	}]
+}

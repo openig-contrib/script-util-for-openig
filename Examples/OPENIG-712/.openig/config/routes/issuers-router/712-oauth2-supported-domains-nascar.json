@@ -1,0 +1,92 @@
+{
+	"heap": [{
+		"name": "dispatcher",
+		"type": "DispatchHandler",
+		"config": {
+			"bindings": [{
+				"handler": {
+					"type": "Chain",
+					"config": {
+						"filters": [{
+							"type": "OAuth2ClientFilter",
+							"config": {
+								"clientEndpoint": "/openid",
+								"failureHandler": "static-openid-failure-handler",
+								"loginHandler": "NascarPage",
+								"metadata": {
+									"client_name": "Registered ForgeShop",
+									"contacts": ["ve7jtb@example.org", "mary@example.org"],
+									"scopes": [
+										"openid", "profile", "address", "phone"
+									],
+									"redirect_uris": ["http://localhost:8082/openid/callback"]
+								},
+								"registrations": ["openamPortal", "googlePortal", "msnPortal", "linkedinPortal"],
+								"requireHttps": false,
+								"requireLogin": true,
+								"target": "${attributes.openid}"
+							}
+						}],
+						"handler": "display-user-info-groovy-handler"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "openamPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "openam",
+			"clientId": "ForgeShop",
+			"clientSecret": "password",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			],
+			"tokenEndpointUseBasicAuth": true
+		}
+	}, {
+		"name": "googlePortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "google",
+			"clientId": "<your_google_client_id>",
+			"clientSecret": "<your_google_client_secret>",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			]
+		}
+	}, {
+		"name": "msnPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "msn",
+			"clientId": "<your_msn_client_id>",
+			"clientSecret": "<your_msn_client_secret>",
+			"scopes": [
+				"wl.basic", "wl.signin"
+			],
+			"tokenEndpointUseBasicAuth": false
+		}
+	}, {
+		"name": "linkedinPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "linkedin",
+			"clientId": "<your_linkedin_client_id>",
+			"clientSecret": "<your_linkedin_client_secret>",
+			"scopes": [
+				"r_basicprofile", "r_emailaddress", "rw_company_admin", "w_share"
+			],
+			"tokenEndpointUseBasicAuth": false
+		}
+	}, {
+		"name": "NascarPage",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "forgeShopNascarPage.groovy"
+		}
+	}],
+	"handler": "dispatcher",
+	"condition": "${matches(request.uri.path, '^/openid')}"
+}
