@@ -84,7 +84,7 @@
 		"type": "ScriptableHandler",
 		"config": {
 			"type": "application/x-groovy",
-			"file": "forgeShopNascarPage.groovy"
+			"file": "forgeshop-nascarpage.html.groovy"
 		}
 	}],
 	"handler": "dispatcher",
