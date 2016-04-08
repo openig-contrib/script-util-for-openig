@@ -43,6 +43,31 @@ http.request(POST, JSON) { req ->
         println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }
 }
 
+// Create a user
+http = new HTTPBuilder("${openamurl}/json/users/?_action=create")
+http.request(POST, JSON) { req ->
+    headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Content-Type' = 'application/json'
+    requestContentType = ContentType.JSON
+    body = """{
+                "username": "gabby",
+                "userpassword": "secret12",
+                "mail": "gabby@wisteria.com",
+                "postalAddress": "4349, Wisteria Lane, San Francisco, CA 94105",
+                "telephoneNumber": "(831) 799-9999"
+              }"""
+
+    response.success = { resp, json ->
+        println()
+        println(json)
+    }
+
+    response.failure = { resp ->
+        println()
+        println """(DEBUG)Create user: ${resp.entity.content.text}"""
+    }
+}
+
 // Configure Openam for oauth2-oidc
 http = new HTTPBuilder("${openamurl}/json/realm-config/services/oauth-oidc/?_action=create")
 http.request(POST, JSON) { req ->
@@ -109,7 +134,7 @@ http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
-    body = """{                
+    body = """{
                 "creationDate": 1458595099104,
                 "lastModifiedDate": 1458595099104,
                 "conditions": [],
@@ -174,7 +199,7 @@ http.request(POST, JSON) { req ->
     }
 }
 
-// Create the Openid's agent.
+// Create the OpenID's agent.
 http = new HTTPBuilder("${openamurl}/json/agents/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken

@@ -1,0 +1,44 @@
+{
+	"heap": [{
+		"name": "dispatcher",
+		"type": "DispatchHandler",
+		"config": {
+			"bindings": [{
+				"handler": {
+					"type": "Chain",
+					"config": {
+						"filters": [{
+							"type": "OAuth2ClientFilter",
+							"config": {
+								"clientEndpoint": "/openid",
+								"failureHandler": "static-openid-failure-handler",
+								"loginHandler": "NascarPage",
+								"metadata": {
+									"client_name": "Dynamically Registered ForgeShop",
+									"contacts": ["ve7jtb@example.org", "mary@example.org"],
+									"scopes": [
+										"openid", "profile", "address", "phone"
+									],
+									"redirect_uris": ["http://localhost:8082/openid/callback"]
+								},
+								"requireHttps": false,
+								"requireLogin": true,
+								"target": "${attributes.openid}"
+							}
+						}],
+						"handler": "display-user-info-groovy-handler"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "NascarPage",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "dynamic-registration-only.html.groovy"
+		}
+	}],
+	"handler": "dispatcher",
+	"condition": "${matches(request.uri.path, '^/openid')}"
+}

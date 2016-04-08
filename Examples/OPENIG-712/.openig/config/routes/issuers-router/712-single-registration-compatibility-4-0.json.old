@@ -1,0 +1,42 @@
+{
+	"heap": [{
+		"name": "dispatcher",
+		"type": "DispatchHandler",
+		"config": {
+			"bindings": [{
+				"handler": {
+					"type": "Chain",
+					"comment": "Supports the old 'registration' attribute'",
+					"config": {
+						"filters": [{
+							"type": "OAuth2ClientFilter",
+							"config": {
+								"clientEndpoint": "/openid",
+								"failureHandler": "static-openid-failure-handler",
+								"registration": "ForgeShop-OpenAM",
+								"requireHttps": false,
+								"requireLogin": true,
+								"target": "${attributes.openid}"
+							}
+						}],
+						"handler": "display-user-info-groovy-handler"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "ForgeShop-OpenAM",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "openam",
+			"clientId": "ForgeShop",
+			"clientSecret": "password",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			],
+			"tokenEndpointUseBasicAuth": true
+		}
+	}],
+	"handler": "dispatcher",
+	"condition": "${matches(request.uri.path, '^/openid')}"
+}

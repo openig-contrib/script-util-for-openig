@@ -18,7 +18,7 @@
 		"name": "google",
 		"type": "Issuer",
 		"config": {
-			"wellKnownEndpoint": "https://accounts.google.com/.well-known/openid-configuration",			
+			"wellKnownEndpoint": "https://accounts.google.com/.well-known/openid-configuration",
 			"supportedDomains": ["gmail.com", "googlemail.com", "g.com"]
 		}
 	}, {
