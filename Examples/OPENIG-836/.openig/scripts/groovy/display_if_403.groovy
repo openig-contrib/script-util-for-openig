@@ -7,7 +7,6 @@ import org.forgerock.http.io.ByteArrayBranchingStream
 next.handle(context, request)
     .thenOnResult {
                   if (it.status == FORBIDDEN) {
-                       println("(DEBUG) Script >>>> " + attributes.myPolicyDecision)
                        it.status = Status.OK
                        it.entity = new ByteArrayBranchingStream((
                            """<html>
