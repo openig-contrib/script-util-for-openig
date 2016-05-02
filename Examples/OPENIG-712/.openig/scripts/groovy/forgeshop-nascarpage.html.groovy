@@ -1,6 +1,4 @@
 import org.forgerock.http.io.ByteArrayBranchingStream
-import org.forgerock.http.protocol.Response
-import org.forgerock.http.protocol.Status
 
 // -----------------------------------------------------------------------------------------------------
 // Displays the nascar page

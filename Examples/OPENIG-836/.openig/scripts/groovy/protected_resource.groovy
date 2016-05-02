@@ -1,6 +1,4 @@
 import org.forgerock.http.io.ByteArrayBranchingStream
-import org.forgerock.http.protocol.Response;
-import org.forgerock.http.protocol.Status
 
 // -----------------------------------------------------------------------------------------------------
 // Simple protected resource
@@ -17,4 +15,4 @@ response.entity = new ByteArrayBranchingStream(("<html> \
 // last line MUST be exchange or return
 // -----------------------------------------------------------------------------------------------------
 return response
-    
+

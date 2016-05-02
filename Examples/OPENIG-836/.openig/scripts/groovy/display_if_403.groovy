@@ -1,8 +1,6 @@
 import static org.forgerock.http.protocol.Status.FORBIDDEN
 
 import org.forgerock.http.io.ByteArrayBranchingStream
-import org.forgerock.http.protocol.Response;
-import org.forgerock.http.protocol.Status
 
 
 // This script displays in the console the advices if they are present.
@@ -24,4 +22,4 @@ next.handle(context, request)
                     } else {
                       return it
                     }
-                  } 
+                  }

@@ -1,7 +1,4 @@
 import org.forgerock.http.io.ByteArrayBranchingStream
-import org.forgerock.http.protocol.Response;
-import org.forgerock.http.protocol.Status
-
 // -----------------------------------------------------------------------------------------------------
 // This is a simple page which autorized user could see displaying the attributes dn and cn
 // -----------------------------------------------------------------------------------------------------
@@ -17,7 +14,7 @@ response.entity = new ByteArrayBranchingStream(("""<html>
                                                         text-align: left;
                                                         padding-left: 30%;
                                                     }
-                                                </style>                                             
+                                                </style>
                                                 <center>
                                                 <h1>Access granted <b>'${attributes.user}'</b></h1>
                                                 <p>If you are able to see this page, that means that the policy filter authorized you.</p>
@@ -31,4 +28,4 @@ response.entity = new ByteArrayBranchingStream(("""<html>
 // last line MUST be exchange or return
 // -----------------------------------------------------------------------------------------------------
 return response
-    
+

@@ -1,10 +1,8 @@
-import org.forgerock.http.protocol.Response;
-import org.forgerock.http.protocol.Status
 import groovy.json.JsonSlurper
 
 def session = contexts.session.session
 // -----------------------------------------------------------------------------------------------------
-// >>>> UPDATE these fields according to your configuration <<<< 
+// >>>> UPDATE these fields according to your configuration <<<<
 // -----------------------------------------------------------------------------------------------------
 attributes.openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
 
@@ -28,7 +26,7 @@ if(!session.containsKey("ssoTokenSubject")) {
                               "-d", "{}", "${attributes.openamurl}/json/authenticate"].execute()
 
     def jsonResponseContainingSSOToken = new JsonSlurper().parseText(curl.text);
-    session.put("ssoTokenSubject", jsonResponseContainingSSOToken.tokenId);      
+    session.put("ssoTokenSubject", jsonResponseContainingSSOToken.tokenId);
 }
 println("SCRIPT(debug)>> tokenID >> " + session.get("ssoTokenSubject"));
 
