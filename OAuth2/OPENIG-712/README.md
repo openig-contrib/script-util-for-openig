@@ -2,7 +2,7 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
 ======
 ----------
 
-**This example shows how to configure OpenIG to use OpenID Connect discovery and dynamic client registration with 'supportedDomains'.**
+**These examples show how to configure OpenIG to use OpenID Connect discovery and dynamic client registration with 'supportedDomains'.**
 
 ----------
 
@@ -22,15 +22,17 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
 **STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid' 
 (example: `http://localhost:8082/openid`)
 
-There are 4 route examples available in the issuers/routers folder which should cover the different OIDC configurations.
-Try them separately.
+Four route examples available in the issuers/routers folder which should cover the different OIDC configurations.
+Try them separately by changing the extension into .json. 
+<br>
+**Only one .json at the time!**
   
 This examples use supportedDomains* `"supportedDomains": ["irock.*", "iforge.*"]` for OpenAM.
 That means that if you use the input box and type: `jackson@irock.com` or `bjensen@iforge.fr` you would be redirected to your OpenAM provider.(see issuers-router.json)
 
 _note:_ 
 
-*This example sets multiples providers like Google, LinkedIn and Msn but you have to configure the file `<openig>/config/routes/issuers-router.json` with your clients id.*
+*Nascar pages use multiple providers like Google, LinkedIn and Msn but you have to configure the file `<openig>/config/routes/issuers-router.json` with your clients id to be able to use them.*
 ----------
 * [Gateway Guide](http://openig.forgerock.org/doc/bootstrap/gateway-guide/index.html#chap-oauth2-client)
 * [Reference](http://openig.forgerock.org/doc/bootstrap/reference/index.html#Issuer)*
