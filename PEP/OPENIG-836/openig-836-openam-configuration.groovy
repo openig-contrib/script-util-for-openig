@@ -1,3 +1,4 @@
+import static groovyx.net.http.ContentType.JSON
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.GET
@@ -19,7 +20,7 @@ def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
 def resourceToProtect = "http://localhost:8082/pep-advices"
 
-// EXAMPLE CONFIGURATION 
+// EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
 def applicationName = "pep-advices-application"
 def policyName = "pep-advices-policy"
@@ -123,7 +124,7 @@ http.request(GET, JSON) { req ->
     response.success = { resp, json ->
         if(json.result.size() > 0) {
             scriptId = json.result['_id'].get(0)
-            println("Script '${applicationName}-script' already exists. Using _id='${scriptId}'")            
+            println("Script '${applicationName}-script' already exists. Using _id='${scriptId}'")
             println()
         }
     }

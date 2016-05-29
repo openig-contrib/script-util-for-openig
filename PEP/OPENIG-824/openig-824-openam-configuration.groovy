@@ -1,3 +1,4 @@
+import static groovyx.net.http.ContentType.JSON
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
@@ -18,7 +19,7 @@ def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
 def resourceToProtect = "http://localhost:8082/pep-policy-attributes"
 
-// EXAMPLE CONFIGURATION 
+// EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
 
 def applicationName = "pep-attributes-application"
@@ -93,12 +94,12 @@ http.request(POST, JSON) { req ->
                 ]
             }"""
 
-    response.success = { resp, json ->        
+    response.success = { resp, json ->
         println()
         println(json)
     }
 
-    response.failure = { resp ->        
+    response.failure = { resp ->
         println()
         println "(DEBUG)Create application: ${resp.entity.content.text}" }
 }
@@ -136,12 +137,12 @@ http.request(POST, JSON) { req ->
                 "resourceTypeUuid": "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
             }"""
 
-    response.success = { resp, json ->        
+    response.success = { resp, json ->
         println()
         println(json)
     }
 
-    response.failure = { resp ->         
+    response.failure = { resp ->
         println()
         println "(DEBUG)Create policy: ${resp.entity.content.text}" }
 }
