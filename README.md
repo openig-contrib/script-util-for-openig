@@ -1,16 +1,28 @@
 script-util-for-openig
 ======
 
-This repository contains scripts to help you to test easily the OpenIG examples.  
+This repository contains short and simple examples on how to configure OpenIG
+to use Policy EnforcementFilter(PEP) or OAuth2 with OpenAM.
 
-How to use the scripts
+How to configure OpenAM?
+-----------------------------
+
+Don't panic. Groovy scripts are available to help you to configure your OpenAM-13 quickly.
+<br>
+You just need to modify the script with your own config parameters and run it to configure your OpenAM.
+<br>
+More details are available for each example.
+
+
+Disclaimer
 =============
 
-Open the script with your favorite editor and modify the configuration fields according to your configuration (these fields are
-generally at the top of the file)
-```// CONFIGURATION (Update it if necessary)```
+This project is not supported by ForgeRock AS.
 
-For groovy script, run the script with the command: ```groovy```
+----------
+* [OpenIG documentation](https://forgerock.org/documentation/openig/)
 
-example: ```groovy openig-824-openam-configuration.groovy```
+----------
+
+*Configuration : OPENAM-13 | OPENIG-5*
 
