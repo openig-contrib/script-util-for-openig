@@ -30,7 +30,7 @@ response.entity = new ByteArrayBranchingStream(("""
     <body>
         <div class="topbottom"></div>
         <div>
-            <img class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/logoForgeShop.png'/>
+            <img class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <br/>
                 <p>Login to ForgeShop using your email address :

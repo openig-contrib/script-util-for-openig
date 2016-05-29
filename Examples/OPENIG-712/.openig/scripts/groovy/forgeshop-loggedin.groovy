@@ -50,7 +50,7 @@ response.entity.string = """
     </script>
     <div class="topbottom"></div>
         <div class ="left">
-            <img src='http://localhost:8082/img/logoForgeShop.png'/>
+            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <h1>You are logged in, ${attributes.openid.user_info.name}!</h1>
                 <p>The ForgeShop command will be sent to:

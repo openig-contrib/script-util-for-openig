@@ -43,29 +43,29 @@ response.entity = new ByteArrayBranchingStream(("""
     <body>
         <div class="topbottom"></div>
         <div>
-            <img class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/logoForgeShop.png'/>
+            <img class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <br/>
                 <p>Log to <b>ForgeShop</b> using your favorite your provider: </p>
                 <ul id='double'>
                     <li>
                         <a href='/openid/login?registration=openamPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/FR_AM_resized.png'/>
+                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/FR_AM_resized.png'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=googlePortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/google_resized.png'/>
+                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/google_resized.png'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=msnPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/msn_resized.jpg'/>
+                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/msn_resized.jpg'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=linkedinPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/Examples/media/linkedin_resized.png'/>
+                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/linkedin_resized.png'/>
                         </a>
                     </li>
                 </ul>
