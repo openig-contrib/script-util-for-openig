@@ -13,8 +13,8 @@
 				"type": "PolicyEnforcementFilter",
 				"config": {
 					"openamUrl": "http://localhost:8090/openam/",
-					"pepUsername": "${attributes.authorizedPolicyUser}",
-					"pepPassword": "${attributes.authorizedPolicyUserPassword}",
+					"pepUsername": "amadmin",
+					"pepPassword": "secret12",
 					"application": "pep-attributes-application",
 					"ssoTokenSubject": "${session.ssoTokenSubject}",
 					"target": "${attributes.myPolicyDecision}"
