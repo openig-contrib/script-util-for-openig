@@ -18,10 +18,10 @@
                 "type": "PolicyEnforcementFilter",
                 "config": {
                     "openamUrl": "http://localhost:8090/openam/",
-                    "pepUsername": "${attributes.authorizedPolicyUser}",
-                    "pepPassword": "${attributes.authorizedPolicyUserPassword}",
+                    "pepUsername": "amadmin",
+                    "pepPassword": "secret12",
                     "application": "pep-advices-application",
-                    "ssoTokenSubject": "${session.ssoTokenSubject}",
+                    "ssoTokenSubject": "${request.cookies['iPlanetDirectoryPro'][0].value}",
                     "target": "${attributes.myPolicyDecision}",
                     "environment": {
                         "DAY_OF_WEEK": [

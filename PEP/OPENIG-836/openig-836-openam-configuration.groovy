@@ -15,7 +15,7 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-def user = "amadmin"
+def user = "amadmin"                           // If you change these fields, don't forget to modify your route accordingly
 def userpass = "secret12"
 def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
 def resourceToProtect = "http://localhost:8082/pep-advices"

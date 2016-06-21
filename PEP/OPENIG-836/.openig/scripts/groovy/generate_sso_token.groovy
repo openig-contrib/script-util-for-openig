@@ -26,8 +26,8 @@ if(!session.containsKey("ssoTokenSubject")) {
                               "-d", "{}", "${attributes.openamurl}/json/authenticate"].execute()
 
     def jsonResponseContainingSSOToken = new JsonSlurper().parseText(curl.text);
-    session.put("ssoTokenSubject", jsonResponseContainingSSOToken.tokenId);
+    request.headers.add("Cookie", "iPlanetDirectoryPro=" + jsonResponseContainingSSOToken.tokenId as String)
 }
-println "SCRIPT(debug)>> tokenID >> " + session.get("ssoTokenSubject");
+println "SCRIPT(debug)>> tokenID >> " + request.cookies['iPlanetDirectoryPro'][0].value;
 
 return next.handle(context, request)
