@@ -1,0 +1,88 @@
+{
+	"heap": [{
+		"name": "dispatcher",
+		"type": "DispatchHandler",
+		"config": {
+			"bindings": [{
+				"handler": {
+					"type": "Chain",
+					"config": {
+						"filters": [{
+							"type": "OAuth2ClientFilter",
+							"config": {
+								"cacheExpiration": "disabled",
+								"clientEndpoint": "/openid",
+								"failureHandler": "static-openid-failure-handler",
+								"registrations": "ForgeShop-OpenAM",
+								"requireHttps": false,
+								"requireLogin": true
+							}
+						}, {
+							"name": "RelayFilter",
+							"type": "HeaderFilter",
+							"config": {
+								"messageType": "REQUEST",
+								"add": {
+									"Authorization": [
+										"Bearer ${attributes.openid.access_token}"
+									]
+								}
+							},
+							"capture": [ "request" ]
+						}, {
+							"type": "OAuth2ResourceServerFilter",
+							"config": {
+								"scopes": [
+									"openid", "profile", "address", "phone"
+								],
+								"requireHttps": false,
+								"tokenInfoEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamurl'].concat('/oauth2/tokeninfo')}",
+								"cacheExpiration": "disabled",
+								"providerHandler": {
+									"type": "ClientHandler"
+								}
+							},
+							"capture": ["request", "filtered_response"]
+						}],
+						"handler": "forgeshop-loggedin.groovy-handler"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "forgeshop-loggedin.groovy-handler",
+		"type": "ScriptableHandler",
+		"config": {
+			"file": "forgeshop-loggedin.groovy",
+			"type": "application/x-groovy"
+		}
+	}, {
+		"name": "static-openid-failure-handler",
+		"type": "StaticResponseHandler",
+		"config": {
+			"status": 500,
+			"reason": "Error",
+			"entity": "A unexpected error occurred: ${attributes.openid.error} <br/>exception: ${attributes.openid.exception}"
+		}
+	}, {
+		"name": "openam",
+		"type": "Issuer",
+		"config": {
+			"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamurl'].concat('/oauth2/.well-known/openid-configuration')}"
+		}
+	}, {
+		"name": "ForgeShop-OpenAM",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "openam",
+			"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['agentName']}",
+			"clientSecret": "${readProperties(system['user.home'].concat('/openig.properties'))['agentPassword']}",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			],
+			"tokenEndpointUseBasicAuth": true
+		}
+	}],
+	"handler": "dispatcher",
+	"condition": "${matches(request.uri.path, '^/openid')}"
+}
