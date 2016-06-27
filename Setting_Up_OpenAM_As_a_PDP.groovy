@@ -1,3 +1,4 @@
+import static groovyx.net.http.ContentType.JSON
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
@@ -11,22 +12,23 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
-def user = "amadmin"
-def userpass = "secret12"
-def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def resourceToProtect = "http://localhost:8081/pep"
+final String user = "amadmin"
+final String userpass = "secret12"
+final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String resourceToProtect = "http://localhost:8081/pep"
 
 // EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
-def applicationName = "iPlanetAMWebAgentService"
-def policyName = "Policy for OpenIG as PEP"
-def description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
+final String applicationName = "iPlanetAMWebAgentService"
+final String policyName = "Policy for OpenIG as PEP"
+final String description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-def SSOToken;
+def SSOToken
+def http
 // Request to get an SSOToken
-def http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamurl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
@@ -48,10 +50,10 @@ http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
-    body = """{ 
-                "username" : "policyAdmin", 
-                "userpassword": "password", 
-                "mail": "policyAdmin@example.com" 
+    body = """{
+                "username" : "policyAdmin",
+                "userpassword": "password",
+                "mail": "policyAdmin@example.com"
            }"""
 
     response.success = { resp, json ->

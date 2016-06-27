@@ -15,22 +15,23 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-def user = "amadmin"                           // If you change these fields, don't forget to modify your route accordingly
-def userpass = "secret12"
-def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def resourceToProtect = "http://localhost:8082/pep-advices"
+final String user = "amadmin"                           // If you change these fields, don't forget to modify your route accordingly
+final String userpass = "secret12"
+final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String resourceToProtect = "http://localhost:8082/pep-advices"
 
 // EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
-def applicationName = "pep-advices-application"
-def policyName = "pep-advices-policy"
-def description = "An example for OpenIG-836 - policy enforcement filter advices/environment"
+final String applicationName = "pep-advices-application"
+final String policyName = "pep-advices-policy"
+final String description = "An example for OpenIG-836 - policy enforcement filter advices/environment"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-def SSOToken;
+def SSOToken
+def http
 // Request to get an SSOToken
-def http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamurl}/json/authenticate")
 http.request(POST,JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass

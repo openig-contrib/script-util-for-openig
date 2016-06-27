@@ -14,34 +14,34 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-def user = 'amadmin'
-def userpass = "secret12" as String
-def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def agentName = "ForgeShop"
-def agentPassword = "password"
-def redirectionUri = "http://localhost:8082/openid/callback"
+final String user = "amadmin"
+final String userpass = "secret12"
+final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String agentName = "ForgeShop"
+final String agentPassword = "password"
+final String redirectionUri = "http://localhost:8082/openid/callback"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 
 // Create a properties file according to your configuration.
 // This file will be used in your route to access the different values.
-def props = new Properties()
-def pathPropsFile = System.getProperty("user.home");
-def propsFile = new File(pathPropsFile + '/openig.properties')
-
-props.setProperty('openamurl', openamurl)
-props.setProperty('agentName', agentName)
-props.setProperty('agentPassword', agentPassword)
-props.setProperty('redirectionUri', redirectionUri)
-props.store(propsFile.newWriter(), 'Properties file generated for OPENIG-933 ')
+final Properties props = new Properties()
+final String pathPropsFile = System.getProperty("user.home");
+final File propsFile = new File(pathPropsFile + "/openig.properties")
+props.setProperty("openamurl", openamurl)
+props.setProperty("agentName", agentName)
+props.setProperty("agentPassword", agentPassword)
+props.setProperty("redirectionUri", redirectionUri)
+props.store(propsFile.newWriter(), "Properties file generated for OPENIG-933")
 println()
 println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
 println()
 
 // -----------------------------------------------------------------------------------------------------
-def SSOToken;
+def SSOToken
+def http
 // Request to get an SSOToken
-def http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamurl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
@@ -56,7 +56,8 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }
+        println "(DEBUG)Unable to create token: ${resp.entity.content.text}"
+    }
 }
 
 // Create a user
