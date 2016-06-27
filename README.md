@@ -17,8 +17,8 @@ More details are available for each example.
 
 What am I looking for?
 -----------------------------
-* [PEP and how to retrieve attributes and advices](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
-* [PEP environment and subject claims](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
+* [Policy Enforcement Filter(PEF): how to retrieve attributes and advices](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
+* [Policy Enforcement Filter(PEF): environment and subject claims](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
 * [OAuth2: nascar page, dynamic client registration and more!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712) 
 * [OAuth2/OpenID: authenticate through OpenAM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
 

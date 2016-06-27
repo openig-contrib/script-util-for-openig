@@ -33,6 +33,7 @@ That means that if you use the input box and type: `jackson@irock.com` or `bjens
 _note:_ 
 
 *Nascar pages use multiple providers like Google, LinkedIn and Msn but you have to configure the file `<openig>/config/routes/issuers-router.json` with your clients id to be able to use them.*
+
 ----------
 * [Gateway Guide](http://openig.forgerock.org/doc/bootstrap/gateway-guide/index.html#chap-oauth2-client)
 * [Reference](http://openig.forgerock.org/doc/bootstrap/reference/index.html#Issuer)*

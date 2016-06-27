@@ -27,7 +27,7 @@ The `OAuth2ClientFilter` generates an access token then go through the `RelayFil
 The `ResourceServer` filter checks if the access token is valid.
 When calling for the first time your protected application, you should access it.
 Then, wait more than 3 seconds for the access token to expire(according to the agent configuration) then hit F5.
-At this point, the `OAuth2ClientFilter` receive a 401, forcing him to refresh the token and it tries to access again to 
+At this point, the `OAuth2ClientFilter` receives a 401, forcing him to refresh the token and it tries to access again to 
 the protected resource.
 
 **In a nutshell: Access and refresh tokens**
