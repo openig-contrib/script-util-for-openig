@@ -36,7 +36,7 @@
 									"openid", "profile", "address", "phone"
 								],
 								"requireHttps": false,
-								"tokenInfoEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamurl'].concat('/oauth2/tokeninfo')}",
+								"tokenInfoEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl'].concat('/oauth2/tokeninfo')}",
 								"cacheExpiration": "disabled",
 								"providerHandler": {
 									"type": "ClientHandler"
@@ -68,7 +68,7 @@
 		"name": "openam",
 		"type": "Issuer",
 		"config": {
-			"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamurl'].concat('/oauth2/.well-known/openid-configuration')}"
+			"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl'].concat('/oauth2/.well-known/openid-configuration')}"
 		}
 	}, {
 		"name": "ForgeShop-OpenAM",

@@ -3,7 +3,7 @@
 		"name": "main-router",
 		"type": "Router",
 		"audit": "global",
-		"baseURI": "http://localhost:8082",
+		"baseURI": "${readProperties(system['user.home'].concat('/openig.properties'))['openigBase']}",
 		"capture": "all"
 	},
 	"heap": [{
