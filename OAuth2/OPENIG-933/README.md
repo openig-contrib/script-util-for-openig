@@ -6,9 +6,9 @@ OPENIG-933 Handle oauth2/openid token expiration in OpenIG
 
 ----------
 
-**STEP-1**: Open and **EDIT** the groovy script configuration to configure your **OpenAM**. Then launch it with:
-
-        '`$ groovy openig-933-openam-configuration.groovy`'
+**STEP-1**: - Open and **EDIT the groovy script configuration** to configure your OpenAM. <br>
+              (The properties to modify are in the top of the file.)<br>
+               Then launch it with: `$ groovy openig-933-openam-configuration.groovy`'
 
 This script configures the OAuth2 OpenID connect, OAuth2 policy, an openID's agent 'ForgeShop' and
 a user `gabby/secret12`. It also creates a 'openig.properties' in your `user.home` directory.
