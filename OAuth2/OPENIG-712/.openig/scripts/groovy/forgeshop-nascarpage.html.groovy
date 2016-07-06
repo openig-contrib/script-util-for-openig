@@ -1,11 +1,11 @@
-import org.forgerock.http.io.ByteArrayBranchingStream
-
 // -----------------------------------------------------------------------------------------------------
 // Displays the nascar page
 // -----------------------------------------------------------------------------------------------------
 response = new Response()
 response.status = Status.OK
-response.entity = new ByteArrayBranchingStream(("""
+response.entity = """
+
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -39,33 +39,35 @@ response.entity = new ByteArrayBranchingStream(("""
         }
         #double li  { width:50%; }
         </style>
+        <link rel='icon' type='image/png' href='https://forgerock.org/ico/favicon-196x196.png' />
+        <title>Welcome to ForgeShop</title>
     </head>
     <body>
         <div class="topbottom"></div>
         <div>
-            <img class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
+            <img alt='ForgeShop' class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <br/>
                 <p>Log to <b>ForgeShop</b> using your favorite your provider: </p>
                 <ul id='double'>
                     <li>
                         <a href='/openid/login?registration=openamPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/FR_AM_resized.png'/>
+                            <img alt='log in with OpenAM' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/FR_AM_resized.png'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=googlePortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/google_resized.png'/>
+                            <img alt='log in with Google' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/google_resized.png'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=msnPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/msn_resized.jpg'/>
+                            <img alt='log in with MSN' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/msn_resized.jpg'/>
                         </a>
                     </li>
                     <li>
                         <a href='/openid/login?registration=linkedinPortal&goto=${contexts.router.originalUri}'>
-                            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/linkedin_resized.png'/>
+                            <img alt='log in with LinkedIN' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/linkedin_resized.png'/>
                         </a>
                     </li>
                 </ul>
@@ -79,6 +81,6 @@ response.entity = new ByteArrayBranchingStream(("""
         </div>
         <div class="topbottom"></div>
     </body>
-</html>""").getBytes())
+</html>""" as String
 
 return response

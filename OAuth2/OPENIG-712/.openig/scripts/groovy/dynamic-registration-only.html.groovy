@@ -1,11 +1,10 @@
-import org.forgerock.http.io.ByteArrayBranchingStream
-
 // -----------------------------------------------------------------------------------------------------
 // Displays the html page
 // -----------------------------------------------------------------------------------------------------
 response = new Response()
 response.status = Status.OK
-response.entity = new ByteArrayBranchingStream(("""
+response.entity = """
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -26,6 +25,8 @@ response.entity = new ByteArrayBranchingStream(("""
             float:left;
         }
         </style>
+        <link rel='icon' type='image/png' href='https://forgerock.org/ico/favicon-196x196.png' />
+        <title>Welcome to ForgeShop</title>
     </head>
     <body>
         <div class="topbottom"></div>
@@ -43,6 +44,6 @@ response.entity = new ByteArrayBranchingStream(("""
         </div>
         <div class="topbottom"></div>
     </body>
-</html>""").getBytes())
+</html>""" as String
 
 return response

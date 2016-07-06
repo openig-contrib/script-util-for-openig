@@ -4,6 +4,7 @@
 response = new Response()
 response.status = Status.OK
 response.entity.string = """
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -41,6 +42,8 @@ response.entity.string = """
             float: left;
         }
         </style>
+        <link rel='icon' type='image/png' href='https://forgerock.org/ico/favicon-196x196.png' />
+        <title>Welcome to ForgeShop</title>
     </head>
     <body>
     <script>
@@ -50,7 +53,7 @@ response.entity.string = """
     </script>
     <div class="topbottom"></div>
         <div class="left">
-            <img src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
+            <img alt='ForgeShop' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <h1>Welcome ${attributes.openid.user_info.name}!</h1>
                 <p>The ForgeShop command will be sent to:
