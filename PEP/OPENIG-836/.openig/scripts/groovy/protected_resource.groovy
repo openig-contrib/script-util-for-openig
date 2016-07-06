@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------------------------
-// Simple protected resource
+// Simple protected resource - It could be anything else.
 // -----------------------------------------------------------------------------------------------------
 response = new Response()
 response.status = Status.OK
@@ -14,7 +14,6 @@ response.entity = """
         <p> Extra attributes in context: <b>${attributes.myPolicyDecision}</b></p>
     </body>
 </html>""" as String
-// last line MUST be exchange or return
 // -----------------------------------------------------------------------------------------------------
 return response
 

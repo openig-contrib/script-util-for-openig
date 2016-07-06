@@ -1,10 +1,9 @@
 // -----------------------------------------------------------------------------------------------------
-// Displays the nascar page
+// Displays the NASCAR page
 // -----------------------------------------------------------------------------------------------------
 response = new Response()
 response.status = Status.OK
 response.entity = """
-
 <!DOCTYPE html>
 <html>
     <head>

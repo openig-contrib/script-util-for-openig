@@ -58,7 +58,7 @@ response.entity.string = """
                 <h1>You are logged in, ${attributes.openid.user_info.name}!</h1>
                 <p>The ForgeShop command will be sent to:
                 <br/><b>${attributes.openid.user_info.address != null ? attributes.openid.user_info.address.formatted : "No address!"}</b>
-                <br/><br/>Don t call us, we call you: <b>${attributes.openid.user_info.phone_number != null ? attributes.openid.user_info.phone_number : "No phone number... "}</b></p>
+                <br/><br/>Don&#39;t call us, we call you: <b>${attributes.openid.user_info.phone_number != null ? attributes.openid.user_info.phone_number : "No phone number... "}</b></p>
                 <button type="button" onclick="NIY()">Modify my command</button><button type="button" onclick="NIY()">Order</button>
             </section>
         </div>
