@@ -2,7 +2,7 @@
     "handler": {
         "type": "Router",
         "audit": "global",
-        "baseURI": "http://localhost:8082",
+        "baseURI": "${readProperties(system['user.home'].concat('/openig.properties'))['openigBase']}",
         "capture": "all"
     },
     "heap": [{
@@ -18,8 +18,7 @@
         "name": "capture",
         "type": "CaptureDecorator",
         "config": {
-            "captureEntity": true,
-            "_captureContext": true
+            "captureEntity": true
         }
     }]
 }

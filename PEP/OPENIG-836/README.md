@@ -8,22 +8,41 @@ OPENIG-836 Configure "Policy Enforcement Filter" to support 'environment' get ba
 
 **STEP-1**: Open and EDIT the groovy script configuration to configure your OpenAM. Then launch it with:
         '`$ groovy openig-836-openam-configuration.groovy`'
-        
+<br> The script creates the policy set, the policy and the following script in AM:
+```
+if (environment) {
+        var dayOfWeek = environment.get("DAY_OF_WEEK");
+        if (dayOfWeek != null && !dayOfWeek.isEmpty()) {
+            var today = dayOfWeek.iterator().next();
+            if (today === "Saturday" || today === "Sunday") {
+                advice.put("VALID_DAYS_OF_THE_WEEK", ["Mon, Tue, Wed, Thu, Fri"]);
+                authorized = false;
+            } else {
+                authorized = true;
+            }
+        } else {
+            logger.error("No Day of week specified in the evaluation request environment parameters.");
+            authorized = false;
+        }
+    } else {
+      logger.error("No environment parameters specified in the evaluation request.");
+      authorized = false;
+    }   
+```
+<br>
 Verify that your OpenAM-13 gets the modifications. (Check application/policy)
-        
+<br>        
 
  - In this sample, the policy that applies to the URI: '`http://localhost:8082/pep-advices`'
   
 **STEP-2**: - **Backup your home folder '.openig'**
-            - Copy the provided folder '.openig' to replace it.
-        
- - Files in `<openig>/config/*`                                  NEEDS to be modified according to your configuration.
- - Files in `<openig>/scripts/*`                                 NEEDS to be modified according to your configuration.                
+            - Copy the provided folder '.openig' to replace it.                    
 
-**STEP-3**: Launch OpenIG and check on the url '<openig-url>/pep-advices' 
-(example: `http://localhost:8082/pep-advices`)
-You should **NOT access to the resource** but you can <u>see the returned <b>advices</b>.<u>
-
+**STEP-3**: Launch OpenIG and check on the url '<openig-url>/pep-advices'<br>
+example: `http://localhost:8082/pep-advices`
+<br><br>
+You should **NOT access to the resource** but you can <u>see the returned <b>advices</b></u>.
+<br>
 If you change the route `66-policy_enforcement_advices.json`, by choosing a week day in the environment field (instead of saturday), 
 that will give you access to the resource (note that <u>advices will not appear</u> in this case).   
                 

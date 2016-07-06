@@ -15,10 +15,11 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-final String user = "amadmin"                           // If you change these fields, don't forget to modify your route accordingly
+final String user = "amadmin"
 final String userpass = "secret12"
-final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-final String resourceToProtect = "http://localhost:8082/pep-advices"
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String openigBase = "http://localhost:8082/"
+final String resourceToProtect = "${openigBase}/pep-advices"    // Change route condition in json file if you modify this field.
 
 // EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
@@ -27,11 +28,24 @@ final String policyName = "pep-advices-policy"
 final String description = "An example for OpenIG-836 - policy enforcement filter advices/environment"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// Create a properties file according to your configuration.
+// This file will be used in your route to access the different values.
+final Properties props = new Properties()
+final String pathPropsFile = System.getProperty("user.home");
+final File propsFile = new File(pathPropsFile + "/openig.properties")
+props.setProperty("openigBase", openigBase)
+props.setProperty("openamUrl", openamUrl)
+props.setProperty("resourceToProtect", resourceToProtect)
+props.setProperty("applicationName", applicationName)
+props.store(propsFile.newWriter(), "Properties file generated for OPENIG-933")
+println()
+println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
+println()
 // -----------------------------------------------------------------------------------------------------
 def SSOToken
 def http
 // Request to get an SSOToken
-http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST,JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
@@ -50,7 +64,7 @@ http.request(POST,JSON) { req ->
 println()
 
 // Creates the application|policy set
-http = new HTTPBuilder("${openamurl}/json/applications/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -117,7 +131,7 @@ println()
 def scriptId
 
 // Checks if the script already exists
-http = new HTTPBuilder("${openamurl}/json/scripts?_queryFilter=name%20eq%20%22${applicationName}-script%22")
+http = new HTTPBuilder("${openamUrl}/json/scripts?_queryFilter=name%20eq%20%22${applicationName}-script%22")
 http.request(GET, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -156,7 +170,7 @@ if(scriptId == null) {
     }
     """.getBytes().encodeBase64().toString()
 
-    http = new HTTPBuilder("${openamurl}/json/scripts/?_action=create")
+    http = new HTTPBuilder("${openamUrl}/json/scripts/?_action=create")
     http.request(POST, JSON) { req ->
         headers.'iPlanetDirectoryPro' = SSOToken
         headers.'Content-Type' = 'application/json'
@@ -180,7 +194,7 @@ if(scriptId == null) {
     println()
 }
 //// Creates the policy
-http = new HTTPBuilder("${openamurl}/json/policies?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'

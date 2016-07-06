@@ -17,17 +17,18 @@
             }, {
                 "type": "PolicyEnforcementFilter",
                 "config": {
-                    "openamUrl": "http://localhost:8090/openam/",
+                    "openamUrl": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl']}",
                     "pepUsername": "amadmin",
                     "pepPassword": "secret12",
-                    "application": "pep-advices-application",
+                    "application": "${readProperties(system['user.home'].concat('/openig.properties'))['applicationName']}",
                     "ssoTokenSubject": "${request.cookies['iPlanetDirectoryPro'][0].value}",
                     "target": "${attributes.myPolicyDecision}",
                     "environment": {
                         "DAY_OF_WEEK": [
                             "Saturday"
                         ]
-                    }
+                    },
+                    "cacheMaxExpiration": "5 seconds"
                 }
             }],
             "handler": {
