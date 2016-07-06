@@ -23,7 +23,6 @@ final String agentPassword = "password"
 final String redirectionUri = "http://localhost:8082/openid/callback"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-
 // Create a properties file according to your configuration.
 // This file will be used in your route to access the different values.
 final Properties props = new Properties()
@@ -38,7 +37,6 @@ props.store(propsFile.newWriter(), "Properties file generated for OPENIG-933")
 println()
 println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
 println()
-
 // -----------------------------------------------------------------------------------------------------
 def SSOToken
 def http
