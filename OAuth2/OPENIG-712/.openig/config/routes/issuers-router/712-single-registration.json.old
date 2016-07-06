@@ -28,8 +28,8 @@
 		"type": "ClientRegistration",
 		"config": {
 			"issuer": "openam",
-			"clientId": "ForgeShop",
-			"clientSecret": "password",
+			"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['agentName']}",
+			"clientSecret": "${readProperties(system['user.home'].concat('/openig.properties'))['agentPassword']}",
 			"scopes": [
 				"openid", "profile", "address", "phone"
 			],

@@ -13,19 +13,35 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
-
-def user = 'amadmin'
-def userpass = "secret12"
-def openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-def agentName = "ForgeShop"
-def agentPassword = "password"
-def redirectionUri = "http://localhost:8082/openid/callback"
+final String user = 'amadmin'
+final String userpass = "secret12"
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String agentName = "ForgeShop"
+final String agentPassword = "password"
+final String openigBase = "http://localhost:8082"
+final String redirectionUri = "${openigBase}/openid/callback"   // See OPENIG-1131 if this field is modified,
+                                                                // you must also change config files.
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// Create a properties file according to your configuration.
+// This file will be used in your route to access the different values.
+final Properties props = new Properties()
+final String pathPropsFile = System.getProperty("user.home");
+final File propsFile = new File(pathPropsFile + "/openig.properties")
+props.setProperty("openigBase", openigBase)
+props.setProperty("openamUrl", openamUrl)
+props.setProperty("agentName", agentName)
+props.setProperty("agentPassword", agentPassword)
+props.setProperty("redirectionUri", redirectionUri)
+props.store(propsFile.newWriter(), "Properties file generated for OPENIG-712")
+println()
+println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
+println()
 // -----------------------------------------------------------------------------------------------------
-def SSOToken;
+def SSOToken
+def http
 // Request to get an SSOToken
-def http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
@@ -44,7 +60,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Create a user
-http = new HTTPBuilder("${openamurl}/json/users/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/users/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -69,7 +85,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Configure Openam for oauth2-oidc
-http = new HTTPBuilder("${openamurl}/json/realm-config/services/oauth-oidc/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/realm-config/services/oauth-oidc/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -129,7 +145,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Creates the application|policy set
-http = new HTTPBuilder("${openamurl}/json/applications/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -165,7 +181,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Create the OAUTH2 policy
-http = new HTTPBuilder("${openamurl}/json/policies?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -180,7 +196,7 @@ http.request(POST, JSON) { req ->
                     "GET": true
                 },
                 "resources": [
-                    "${openamurl}/oauth2/authorize?*"
+                    "${openamUrl}/oauth2/authorize?*"
                 ],
                 "subject": {
                     "type": "AuthenticatedUsers"
@@ -200,7 +216,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Create the OpenID's agent.
-http = new HTTPBuilder("${openamurl}/json/agents/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/agents/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'

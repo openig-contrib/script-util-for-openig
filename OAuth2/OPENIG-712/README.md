@@ -10,19 +10,15 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
         '`$ groovy openig-712-openam-configuration.groovy`'
         This script configures the OAuth2 OpenID connect, OAuth2 policy ,an openID's agent 'ForgeShop' and
         a user "gabby/secret12"
+        <br> It also creates a 'openig.properties' in your `user.home` directory used by the json configuration files.
   
 **STEP-2**: Backup your home folder '.openig'. <br>
             Copy the provided folder '.openig' to replace it.
-        
- - File `<openig>/config/config.json`                          NEEDS to be modified according to your configuration.
- - File `<openig>/config/routes/issuers-router.json`           NEEDS to be modified according to your configuration.
- - File `<openig>/config/routes/issuers-router/*`              NEEDS to be modified according to your configuration.
- - File `<openig>/scripts/*`                                   NEEDS to be modified according to your configuration.
 
-**STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid'
-(example: `http://localhost:8082/openid`)
+**STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid' <br>
+            example: `http://localhost:8082/openid`
 
-**Four route examples available** in the issuers/routers folder which should cover the different OIDC configurations:
+**Four route examples available** in the issuers/routers folder which should cover the different OIDC configurations:<br>
 - dynamic registration only
 - supportedDomains with NASCAR page
 - use a single client registration
