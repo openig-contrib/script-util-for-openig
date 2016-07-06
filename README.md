@@ -2,7 +2,7 @@ OPENIG' configuration examples
 ======
 
 This repository contains short and simple samples on how to configure **OpenIG**
-to use **Policy Enforcement Filter**(PEP/PEF), **OAuth2** **with OpenAM(13+)** or **TokenTransformationFilter(TTF)**.
+to use **Policy Enforcement Filter**(PEP/PEF), **OAuth2** **with OpenAM(13+)** or **TokenTransformationFilter**(TTF).
 
 In all these examples, **OPENAM** acts as a policy decision point(for the PEF) or as an an OpenID Provider/AS(for OAuth2) or REST STS instance(for TTF).
 

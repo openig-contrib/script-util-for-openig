@@ -19,11 +19,16 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
  - File `<openig>/config/routes/issuers-router/*`              NEEDS to be modified according to your configuration.
  - File `<openig>/scripts/*`                                   NEEDS to be modified according to your configuration.
 
-**STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid' 
+**STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid'
 (example: `http://localhost:8082/openid`)
 
-Four route examples available in the issuers/routers folder which should cover the different OIDC configurations.
-Try them separately by changing the extension into .json. 
+**Four route examples available** in the issuers/routers folder which should cover the different OIDC configurations:
+- dynamic registration only
+- supportedDomains with NASCAR page
+- use a single client registration
+- use a single client registration(version 4.0)
+<br>
+-> Try them separately by changing the extension into .json. 
 <br>
 **Only one .json at the time!**
   
