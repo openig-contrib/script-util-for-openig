@@ -12,10 +12,10 @@
 			}, {
 				"type": "PolicyEnforcementFilter",
 				"config": {
-					"openamUrl": "http://localhost:8090/openam/",
+					"openamUrl": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl']}",
 					"pepUsername": "amadmin",
 					"pepPassword": "secret12",
-					"application": "pep-attributes-application",
+					"application": "${readProperties(system['user.home'].concat('/openig.properties'))['applicationName']}",
 					"ssoTokenSubject": "${session.ssoTokenSubject}",
 					"target": "${attributes.myPolicyDecision}"
 				}
