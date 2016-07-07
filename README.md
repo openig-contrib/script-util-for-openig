@@ -16,7 +16,9 @@ and run the given groovy script to have the OPENIG example ready!
 <br>
 
 What am I looking for?
------------------------------
+----------------------------- 
+
+* [Policy Enforcement Filter(PEF): configure OpenAM as a PDP](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/Setting_Up_OpenAM_As_A_PDP.groovy)
 * [Policy Enforcement Filter(PEF): how to retrieve attributes and advices](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
 * [Policy Enforcement Filter(PEF): environment and subject claims](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
 

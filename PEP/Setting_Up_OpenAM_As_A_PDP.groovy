@@ -8,13 +8,13 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // This script is use to configure your OPENAM - As described in Gateway Guide 6.3
 // # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
-// # vrom 2016
+// # vrom 07/07/2016
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 final String user = "amadmin"
-final String userpass = "secret12"
-final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String userPassword = "secret12"
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String resourceToProtect = "http://localhost:8081/pep"
 
 // EXAMPLE CONFIGURATION
@@ -28,10 +28,10 @@ final String description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
 def SSOToken
 def http
 // Request to get an SSOToken
-http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
-    headers.'X-OpenAM-Password' = userpass
+    headers.'X-OpenAM-Password' = userPassword
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = ''
@@ -45,14 +45,14 @@ http.request(POST, JSON) { req ->
 }
 
 // Create a user
-http = new HTTPBuilder("${openamurl}/json/users/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/users/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
                 "username" : "policyAdmin",
-                "userpassword": "password",
+                "userPasswordword": "password",
                 "mail": "policyAdmin@example.com"
            }"""
 
@@ -67,7 +67,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Create a group
-http = new HTTPBuilder("${openamurl}/json/groups?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/groups?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -88,7 +88,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Creates the application|policy set
-http = new HTTPBuilder("${openamurl}/json/applications/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -146,7 +146,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Creates the policy
-http = new HTTPBuilder("${openamurl}/json/policies?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
