@@ -19,7 +19,7 @@
 									"scopes": [
 										"openid", "profile", "address", "phone"
 									],
-									"redirect_uris": ["http://localhost:8082/openid/callback"]
+									"redirect_uris": ["${readProperties(system['user.home'].concat('/openig.properties'))['redirectionUri']}"]
 								},
 								"registrations": ["openamPortal", "googlePortal", "msnPortal", "linkedinPortal"],
 								"requireHttps": false,

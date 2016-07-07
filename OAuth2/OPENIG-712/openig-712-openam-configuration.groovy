@@ -19,8 +19,7 @@ final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with
 final String agentName = "ForgeShop"
 final String agentPassword = "password"
 final String openigBase = "http://localhost:8082"
-final String redirectionUri = "${openigBase}/openid/callback"   // See OPENIG-1131 if this field is modified,
-                                                                // you must also change config files.
+final String redirectionUri = "${openigBase}/openid/callback"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // Create a properties file according to your configuration.
