@@ -41,9 +41,9 @@ Verify that your OpenAM-13 gets the modifications. (Check application/policy)
 **STEP-3**: Launch OpenIG and check on the url '<openig-url>/pep-advices'<br>
 example: `http://localhost:8082/pep-advices`
 <br><br>
-You should **NOT access to the resource** but you can <u>see the returned <b>advices</b></u>.
+You should **NOT access to the resource** but you can <u>see the returned <b>advices</b></u>.<br>
 <br>
-**Script and advices**
+**Script and advices**<br>
 The given 'javascript' script makes OpenAM policy to react on the environment attributes declared in your PolicyEnforcementFilter.<br>
 By default, in this example, you declared the `"DAY_OF_WEEK"` to be `Saturday`in `66-policy_enforcement_advices.json` <br>
 If you call the URI  `/pep-advices`:
