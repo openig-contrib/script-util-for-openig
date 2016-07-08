@@ -14,10 +14,11 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
+final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String user = "amadmin"                 // If you modify these fields, modify your route file accordingly
 final String userpass = "secret12"
-final String openamurl = "http://localhost:8090/openam" // URL must NOT end with a slash
-final String resourceToProtect = "http://localhost:8082/pep-policy-attributes"
+final String resourceToProtect = "${openigBase}/pep-policy-attributes"
 
 // EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
@@ -27,11 +28,23 @@ final String policyName = "pep-attributes-policy"
 final String description = "An example for OpenIG-824 - policy enforcement filter attributes"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// Create a properties file according to your configuration.
+// This file will be used in your route to access the different values.
+final Properties props = new Properties()
+final String pathPropsFile = System.getProperty("user.home");
+final File propsFile = new File(pathPropsFile + "/openig.properties")
+props.setProperty("openigBase", openigBase)
+props.setProperty("openamUrl", openamUrl)
+props.setProperty("applicationName", applicationName)
+props.store(propsFile.newWriter(), "Properties file generated for OPENIG-824")
+println()
+println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
+println()
 // -----------------------------------------------------------------------------------------------------
 def SSOToken
 def http
 // Request to get an SSOToken
-http = new HTTPBuilder("${openamurl}/json/authenticate")
+http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST,JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
@@ -48,7 +61,7 @@ http.request(POST,JSON) { req ->
 }
 
 // Creates the application|policy set
-http = new HTTPBuilder("${openamurl}/json/applications/?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
@@ -106,7 +119,7 @@ http.request(POST, JSON) { req ->
 }
 
 // Creates the policy
-http = new HTTPBuilder("${openamurl}/json/policies?_action=create")
+http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'

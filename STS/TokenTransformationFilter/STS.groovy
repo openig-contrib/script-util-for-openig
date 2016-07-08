@@ -13,10 +13,10 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
+final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String user = 'amadmin'
 final String userPass = "secret12"
-final String openigBase = "http://localhost:8082/"
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 // Following properties are for the doc example - if you modify them, you MUST modify the 'id_token' route.
 final String agentName = "oidc_client_for_sts"
 final String agentPassword = "password"
@@ -73,7 +73,8 @@ http.request(POST, JSON) { req ->
     body = """{
                 "username": "george",
                 "cn": "george costanza",
-                "userpassword": "costanza"
+                "userpassword": "costanza",
+                "mail": ["costanza"]
               }"""
 
     response.success = { resp, json ->
