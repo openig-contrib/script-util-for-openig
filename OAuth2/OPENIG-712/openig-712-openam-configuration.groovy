@@ -84,7 +84,7 @@ http.request(POST, JSON) { req ->
     }
 }
 
-// Configure Openam for oauth2-oidc
+// Configure OpenAM for oauth2-oidc
 http = new HTTPBuilder("${openamUrl}/json/realm-config/services/oauth-oidc/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
@@ -141,7 +141,36 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println "(DEBUG)Create application: ${resp.entity.content.text}" }
+        println "(DEBUG)Configure OpenAM for oauth2-oidc: ${resp.entity.content.text}" }
+}
+
+def oauth2ResourceType
+// Creates OAuth2 resource type
+http = new HTTPBuilder("${openamUrl}/json/resourcetypes/?_action=create")
+http.request(POST, JSON) { req ->
+    headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Content-Type' = 'application/json'
+    requestContentType = ContentType.JSON
+    body = """{
+                "name": "OAuth2",
+                "description": "",
+                "patterns": ["*://*:*/*/authorize?*"],
+                "actions": {
+                    "POST": true,
+                    "GET": true
+                }
+            }"""
+
+    response.success = { resp, json ->
+        println()
+        oauth2ResourceType = json.uuid;
+        println(json)
+    }
+
+    response.failure = { resp ->
+        println()
+        println "(DEBUG)Create resource type OAuth2: ${resp.entity.content.text}"
+    }
 }
 
 // Creates the application|policy set
@@ -151,12 +180,10 @@ http.request(POST, JSON) { req ->
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
-                "creationDate": 1458595099104,
-                "lastModifiedDate": 1458595099104,
                 "conditions": [],
                 "createdBy": "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
                 "lastModifiedBy": "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
-                "resourceTypeUuids": ["a4a432f3-d55b-40af-8771-fbfc51517f1f"],
+                "resourceTypeUuids": ["${oauth2ResourceType}"],
                 "resourceComparator": null,
                 "applicationType": "iPlanetAMWebAgentService",
                 "subjects": [],
@@ -201,7 +228,7 @@ http.request(POST, JSON) { req ->
                 "subject": {
                     "type": "AuthenticatedUsers"
                 },
-                "resourceTypeUuid": "a4a432f3-d55b-40af-8771-fbfc51517f1f"
+                "resourceTypeUuid": "${oauth2ResourceType}"
             }"""
 
     response.success = { resp, json ->
