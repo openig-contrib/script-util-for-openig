@@ -73,7 +73,8 @@ http.request(POST, JSON) { req ->
     body = """{
                 "username": "george",
                 "cn": "george costanza",
-                "userpassword": "costanza"
+                "userpassword": "costanza",
+                "mail": ["costanza"]
               }"""
 
     response.success = { resp, json ->
