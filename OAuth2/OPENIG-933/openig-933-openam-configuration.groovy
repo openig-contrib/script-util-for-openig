@@ -171,7 +171,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println "(DEBUG)Create application: ${resp.entity.content.text}" }
+        println "(DEBUG)Create service 'oauth-oidc': ${resp.entity.content.text}" }
 }
 
 // Creates the application|policy set
@@ -241,7 +241,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println """(DEBUG)Create policy: ${resp.entity.content.text}"""
+        println """(DEBUG)Create OAuth2 policy: ${resp.entity.content.text}"""
     }
 }
 

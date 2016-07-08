@@ -203,7 +203,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println "(DEBUG)Create application: ${resp.entity.content.text}"
+        println "(DEBUG)Create OAuth2 application: ${resp.entity.content.text}"
     }
 }
 
@@ -238,7 +238,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println """(DEBUG)Create policy: ${resp.entity.content.text}"""
+        println """(DEBUG)Create OAUTH2 policy: ${resp.entity.content.text}"""
     }
 }
 
