@@ -1,18 +1,18 @@
-TokenTransformationFilter — transform a OAuth2/OpenID Connect ID token issued by OpenAM to SAML assertions
+TokenTransformationFilter — transform an OAuth2/OpenID Connect ID token issued by OpenAM into SAML assertions
 ======
 ----------
 
-**This example will show you how to use the Token Transformation Filter: OpenID Connect ID token to SAML assertions.**
+**This example shows you how to use the Token Transformation Filter: Convert an OpenID Connect ID token into SAML assertions.**
 
 ----------
 
 **STEP-1**: - Open and **EDIT the groovy script configuration** to configure your OpenAM. <br>
-              (The properties to modify are in the top of the file.)<br>
-               Then launch it with: '`$ groovy STS.groovy`'
+              (The properties to modify are at the top of the file.)<br>
+              Then launch the script with: '`$ groovy STS.groovy`'
             
             
 This script configures OpenAM as described in the documentation:<br>
-        - creates OAuth2 policy, agent, user `george costanza`, Bearer authentication module and configures the REST STS.
+        - creates OAuth2 policy, agent, user `george costanza`, Bearer authentication module, and configures the REST STS.
         - creates 'openig.properties' in your `user.home` directory.
   
 **STEP-2**: **Backup your home folder '.openig'.** <br>
@@ -28,13 +28,13 @@ This script configures OpenAM as described in the documentation:<br>
 **In a nutshell: SAML2.0 and OAuth2**
 
 - SAML 2.0 is an XML based framework that is used for describing and exchanging security information. 
-It can be used for Single Sign On (SSO), Identity Management and Federation.
+It can be used for Single Sign On (SSO), Identity Management, and Federation.
 - OAuth2 is a standard for authorization.
 
-In one hand, we have enterprises with existing/ legacy SAML 2.0 based Single Sign-On (SSO) and on the other, 
-we have a world ruled by mobile and social applications(OAuth2/OpenID)<br>
-**OpenIG** bridges OAuth 2.0 and SAML frameworks with the Token Transformation Filter and transforms OAuth2/OpenID 
-Connect ID token to SAML assertions.
+On one hand, we have enterprises with existing, legacy SAML 2.0 based Single Sign-On (SSO). On the other hand, 
+we have a world ruled by mobile and social applications(OAuth2/OpenID).<br>
+**OpenIG** bridges OAuth 2.0 and SAML frameworks with the Token Transformation Filter, transforming OAuth2/OpenID 
+Connect ID tokens into SAML assertions.
 
 
 ----------
