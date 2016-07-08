@@ -14,11 +14,10 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-
-final String openigBase = "http://localhost:8082"
+final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String user = "amadmin"                 // If you modify these fields, modify your route file accordingly
 final String userpass = "secret12"
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String resourceToProtect = "${openigBase}/pep-policy-attributes"
 
 // EXAMPLE CONFIGURATION

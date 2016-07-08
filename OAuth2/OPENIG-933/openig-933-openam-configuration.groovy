@@ -14,10 +14,10 @@ import groovyx.net.http.*
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-final String openigBase = "http://localhost:8082"
+final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String user = "amadmin"
 final String userPass = "secret12"
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
 final String agentName = "ForgeShop"
 final String agentPassword = "password"
 final String redirectionUri = "${openigBase}/openid/callback"
