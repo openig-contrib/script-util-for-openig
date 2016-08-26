@@ -21,45 +21,45 @@ else
     else
         wget https://download.forgerock.org/downloads/openig/nightly/$OPENIG_FILE
         if [[ $? -ne 0 ]]; then
-		   echo "wget failed - unable to get OpenIG file from remote server."
-		   exit 1;
+           echo "wget failed - unable to get OpenIG file from remote server."
+           exit 1;
         fi
     fi
 # Rename it and copying it to tomcat directory
-	cp -vf OpenIG-5.0.0-SNAPSHOT.war ROOT.war
-	service tomcat7 stop
-	rm -rf /var/lib/tomcat7/webapps/ROOT/
-	cp -v ROOT.war /var/lib/tomcat7/webapps/
+    cp -vf OpenIG-5.0.0-SNAPSHOT.war ROOT.war
+    service tomcat7 stop
+    rm -rf /var/lib/tomcat7/webapps/ROOT/
+    cp -v ROOT.war /var/lib/tomcat7/webapps/
 
 # Create OpenIG configuration files
-	mkdir -v $OPENIG_DIRECTORY
-	mkdir -vp $OPENIG_DIRECTORY/config/routes/
-	mkdir -vp $OPENIG_DIRECTORY/scripts/groovy/
+    mkdir -v $OPENIG_DIRECTORY
+    mkdir -vp $OPENIG_DIRECTORY/config/routes/
+    mkdir -vp $OPENIG_DIRECTORY/scripts/groovy/
 
 # Get the configuration files from OpenIG github repo
 # > Hello world example
-	if [ ! -f "hello-world.json" ];
+    if [ ! -f "hello-world.json" ];
     then
-      	wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/hello-world.json
+        wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/hello-world.json
     fi
-	cp -vf hello-world.json $OPENIG_DIRECTORY/config/routes/
+    cp -vf hello-world.json $OPENIG_DIRECTORY/config/routes/
 
-	if [ ! -f "hello-world.groovy" ];
+    if [ ! -f "hello-world.groovy" ];
     then
-      	wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/hello-world.groovy
+        wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/hello-world.groovy
     fi
-	cp -vf hello-world.groovy $OPENIG_DIRECTORY/scripts/groovy
+    cp -vf hello-world.groovy $OPENIG_DIRECTORY/scripts/groovy
 # > HealthCheck example
-	if [ ! -f "healthcheck.json" ];
+    if [ ! -f "healthcheck.json" ];
     then
-		wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/healthcheck.json
+        wget https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/AWS-config-examples/healthcheck.json
     fi
-	cp -vf healthcheck.json $OPENIG_DIRECTORY/config/routes/
+    cp -vf healthcheck.json $OPENIG_DIRECTORY/config/routes/
 
 # Setting tomcat as a service
-	chkconfig --level 345 tomcat7 on
-	sudo service tomcat7 start
-	echo ""
-	echo "Done. You can access Openig on port <ec2 machine>:8080/hello-world"
-	echo ""
+    chkconfig --level 345 tomcat7 on
+    sudo service tomcat7 start
+    echo ""
+    echo "Done. You can access Openig on port <ec2 machine>:8080/hello-world"
+    echo ""
 fi
