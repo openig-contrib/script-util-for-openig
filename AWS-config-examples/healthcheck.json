@@ -1,0 +1,10 @@
+{
+  "handler": {
+    "type": "StaticResponseHandler",
+    "config": {
+      "status": 200
+    }
+  },
+  "condition": "${matches(request.uri.path, '^/healthcheck')}",
+  "capture": "all"
+}
