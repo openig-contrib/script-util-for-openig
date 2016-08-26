@@ -1,0 +1,12 @@
+{
+  "handler": {
+    "name": "myScriptableHandler",
+    "type": "ScriptableHandler",
+    "config": {
+      "type": "application/x-groovy",
+      "file": "hello-world.groovy"
+    }
+  },
+  "condition": "${matches(request.uri.path, '^/hello-world')}",
+  "capture": "all"
+}
