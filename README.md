@@ -25,7 +25,8 @@ What am I looking for?
 * [OAuth2/OpenID: authenticate through OpenAM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
-<br>
+<br><br>
+* [AWS: Deploy OpenIG](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
 
 OpenIG Official links
 -----------------------------
