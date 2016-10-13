@@ -1,8 +1,7 @@
 // -----------------------------------------------------------------------------------------------------
 // Dynamic registration only
 // -----------------------------------------------------------------------------------------------------
-response = new Response()
-response.status = Status.OK
+response = new Response(Status.OK)
 response.entity = """
 <!DOCTYPE html>
 <html>

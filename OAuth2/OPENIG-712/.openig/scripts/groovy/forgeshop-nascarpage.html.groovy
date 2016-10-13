@@ -1,8 +1,7 @@
 // -----------------------------------------------------------------------------------------------------
 // Displays the NASCAR page
 // -----------------------------------------------------------------------------------------------------
-response = new Response()
-response.status = Status.OK
+response = new Response(Status.OK)
 response.entity = """
 <!DOCTYPE html>
 <html>
@@ -81,5 +80,4 @@ response.entity = """
         <div class="topbottom"></div>
     </body>
 </html>""" as String
-
 return response

@@ -1,9 +1,8 @@
 // -----------------------------------------------------------------------------------------------------
 // Protected resource
 // -----------------------------------------------------------------------------------------------------
-response = new Response()
-response.status = Status.OK
-response.entity.string = """
+response = new Response(Status.OK)
+response.entity = """
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,6 +63,5 @@ response.entity.string = """
         </div>
         <div class="topbottom"></div>
     </body>
-</html>"""
-
+</html>""" as String
 return response
