@@ -52,7 +52,7 @@ http.request(POST, JSON) { req ->
     requestContentType = ContentType.JSON
     body = """{
                 "username" : "policyAdmin",
-                "userPasswordword": "password",
+                "userpassword": "password",
                 "mail": "policyAdmin@example.com"
            }"""
 
