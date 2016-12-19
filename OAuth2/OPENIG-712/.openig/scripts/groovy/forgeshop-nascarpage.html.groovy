@@ -35,7 +35,10 @@ response.entity = """
             float:left;
             display: block;
         }
-        #double li  { width:50%; }
+        #double li  {
+            width: 40%;
+            padding: 15px;
+        }
         </style>
         <link rel='icon' type='image/png' href='https://forgerock.org/ico/favicon-196x196.png' />
         <meta charset='utf-8'/>
@@ -47,7 +50,7 @@ response.entity = """
             <img alt='ForgeShop' class="logo" src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
                 <br/>
-                <p>Log to <b>ForgeShop</b> using your favorite your provider: </p>
+                <p>Log in to <b>ForgeShop</b> using your favorite OpenID provider: </p>
                 <ul id='double'>
                     <li>
                         <a href='/openid/login?registration=openamPortal&goto=${contexts.router.originalUri}'>
@@ -72,7 +75,7 @@ response.entity = """
                 </ul>
                 <p>Or enter your host or email address :
                 <form action='/openid/login?'>
-                    <input type='text' name='discovery' value='http://server.register.com:8090/jackson' size='35'>
+                    <input type='text' name='discovery' placeholder='ex: jackson@iforge.com' size='35'>
                     <br/>
                     <input type='hidden' name='goto' value='${contexts.router.originalUri}'>
                 </form>
