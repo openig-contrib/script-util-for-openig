@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------------------------
-// Protected resource
+// Failure Handler for the policy enforcement filter
 // -----------------------------------------------------------------------------------------------------
 response = new Response(Status.OK)
 response.entity = """
@@ -55,7 +55,10 @@ response.entity = """
         <div class ="left">
             <img alt='ForgeShop' src='https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/logoForgeShop.png'/>
             <section class="middle">
-                <h1>You are allowed to see this resource, ${contexts.ssoToken.info.uid}!</h1>
+                <h1>Access to this resource has been limited, ${contexts.ssoToken.info.uid}!</h1>
+				<br/>
+				<p><h3>TIP:</h3> This resource is available only on:
+				${contexts.policyDecision.advices}</p>
             </section>
         </div>
         <div class="topbottom"></div>
@@ -63,4 +66,3 @@ response.entity = """
 </html>""" as String
 
 return response
-

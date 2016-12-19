@@ -3,16 +3,12 @@
         "type": "Chain",
         "config": {
             "filters": [{
-                "type": "ScriptableFilter",
+                "type": "SingleSignOnFilter",
+                "name": "SingleSignOn",
                 "config": {
-                    "type": "application/x-groovy",
-                    "file": "generate_sso_token.groovy"
-                }
-            }, {
-                "type": "ScriptableFilter",
-                "config": {
-                    "type": "application/x-groovy",
-                    "file": "display_if_403.groovy"
+                    "openamUrl": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl']}",
+                    "realm": "/",
+                    "cookieName": "iPlanetDirectoryPro"
                 }
             }, {
                 "type": "PolicyEnforcementFilter",
@@ -21,14 +17,19 @@
                     "pepUsername": "amadmin",
                     "pepPassword": "secret12",
                     "application": "${readProperties(system['user.home'].concat('/openig.properties'))['applicationName']}",
-                    "ssoTokenSubject": "${request.cookies['iPlanetDirectoryPro'][0].value}",
-                    "target": "${attributes.myPolicyDecision}",
+                    "ssoTokenSubject": "${contexts.ssoToken.value}",
+                    "failureHandler": {
+                        "type": "ScriptableHandler",
+                        "config": {
+                            "type": "application/x-groovy",
+                            "file": "failureHandlerPolicy.groovy"
+                        }
+                    },
                     "environment": {
                         "DAY_OF_WEEK": [
                             "Saturday"
                         ]
-                    },
-                    "cacheMaxExpiration": "5 seconds"
+                    }
                 }
             }],
             "handler": {

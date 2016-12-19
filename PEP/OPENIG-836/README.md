@@ -49,8 +49,8 @@ By default, in this example, you declared the `"DAY_OF_WEEK"` to be `Saturday`in
 If you call the URI  `/pep-advices`:
 --You are not allowed to see the protected resource, but you will see the advices.
 <br><br>
-But if you change the route `66-policy_enforcement_advices.json`, by choosing a week day in the environment field, let's say`Monday`, 
-and if you call again the URI  `/pep-advices`, then you will have access to the resource!<br>
+But if you change the route `66-policy_enforcement_advices.json`, and modify the day in the environment field to `Monday`,
+then, by calling again the URI  `/pep-advices`, then you will have access to the resource!<br>
 (note that <u>advices will not appear</u> in this case).  
                 
 ----------       
@@ -58,7 +58,8 @@ and if you call again the URI  `/pep-advices`, then you will have access to the 
 * [Reference Guide](http://openig.forgerock.org/doc/bootstrap/reference/index.html#PolicyEnforcementFilter)
 * [OpenAM Developer's Guide](http://openam.forgerock.org/doc/bootstrap/dev-guide/index.html#rest-api-authz-policy-decisions)
 * [OpenIG-836](https://bugster.forgerock.org/jira/browse/OPENIG-836)
+* [OpenIG-1433](https://bugster.forgerock.org/jira/browse/OPENIG-1433)
 
 ----------
 
-*Configuration : OPENAM-13 | OPENIG-5*
+*Configuration : OPENAM-13* | OPENIG-5*
