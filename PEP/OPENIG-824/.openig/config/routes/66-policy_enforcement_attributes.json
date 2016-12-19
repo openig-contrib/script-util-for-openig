@@ -3,11 +3,12 @@
 		"type": "Chain",
 		"config": {
 			"filters": [{
-				"type": "ScriptableFilter",
-				"comment": "Update the given script according to your configuration",
+				"type": "SingleSignOnFilter",
+				"name": "SingleSignOn",
 				"config": {
-					"type": "application/x-groovy",
-					"file": "generate_sso_token.groovy"
+					"openamUrl": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl']}",
+					"realm": "/",
+					"cookieName": "iPlanetDirectoryPro"
 				}
 			}, {
 				"type": "PolicyEnforcementFilter",
@@ -16,8 +17,7 @@
 					"pepUsername": "amadmin",
 					"pepPassword": "secret12",
 					"application": "${readProperties(system['user.home'].concat('/openig.properties'))['applicationName']}",
-					"ssoTokenSubject": "${session.ssoTokenSubject}",
-					"target": "${attributes.myPolicyDecision}"
+					"ssoTokenSubject": "${contexts.ssoToken.value}"
 				}
 			}],
 			"handler": {

@@ -16,7 +16,8 @@ This script configures the policy set and policy to protect the resource: `/pep-
  - In this sample, the OPENAM policy about the URL: 
     `http://localhost:8082/pep-policy-attributes`, allows access to all registered users and returns within its response the given
     and pre-configured policy settings: the **subject's "cn" and "dn" profile attributes**.
-    You can retrieve these attribute when using **OPENIG**: in `${attributes.policy.attributes.dn}` or `${attributes.myPolicyDecision.attributes.cn}` 
+
+    You can retrieve these attribute when using **OPENIG**: in `${contexts.policyDecision.attributes.dn}` or `${contexts.policyDecision.attributes.cn}`
   
 **STEP-2**: Backup your home folder '.openig'<br>
             Copy the provided folder '.openig' to replace it.                        
@@ -30,6 +31,8 @@ This script configures the policy set and policy to protect the resource: `/pep-
 * [Reference Guide](http://openig.forgerock.org/doc/bootstrap/reference/index.html#PolicyEnforcementFilter)
 * [OpenAM Developer's Guide](http://openam.forgerock.org/doc/bootstrap/dev-guide/index.html#rest-api-authz-policy-decisions)
 * [OpenIG-824](https://bugster.forgerock.org/jira/browse/OPENIG-824)
+* [OpenIG-1202](https://bugster.forgerock.org/jira/browse/OPENIG-1202)
+* [OpenIG-1433](https://bugster.forgerock.org/jira/browse/OPENIG-1433)
 
 ----------
 
