@@ -4,14 +4,14 @@
 		"type": "Router",
 		"audit": "global",
 		"config": {
-			"directory": "${readProperties(system['user.home']}/.openig/config/routes/issuers-router"
+			"directory": "${system['user.home'].concat('/.openig/config/routes/issuers-router')}"
 		}
 	},
 	"heap": [{
 		"name": "openam",
 		"type": "Issuer",
 		"config": {
-			"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl'].concat('/oauth2/.well-known/openid-configuration')",
+			"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['openamUrl'].concat('/oauth2/.well-known/openid-configuration')}",
 			"supportedDomains": ["irock.*", "iforge.*"]
 		}
 	}, {
