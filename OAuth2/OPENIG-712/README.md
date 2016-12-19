@@ -20,7 +20,7 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
 
 **Four route examples available** in the issuers/routers folder which should cover the different OIDC configurations:<br>
 - dynamic registration only
-- supportedDomains with NASCAR page
+- supportedDomains with NASCAR page:
 - use a single client registration
 - use a single client registration(version 4.0)
 <br>
@@ -31,6 +31,8 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
 This examples use supportedDomains* `"supportedDomains": ["irock.*", "iforge.*"]` for OpenAM.
 That means that if you use the input box and type: `jackson@irock.com` or `bjensen@iforge.fr` you would be redirected to your OpenAM provider.(see issuers-router.json)
 
+
+![ForgeShop Nascar Page](https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/forgeshop_nascarpage.png)
 _note:_ 
 
 *Nascar pages use multiple providers like Google, LinkedIn and Msn but you have to configure the file `<openig>/config/routes/issuers-router.json` with your clients id to be able to use them.*
@@ -42,4 +44,4 @@ _note:_
 
 ----------
 
-*Configuration : OPENAM-13 | OPENIG-5*
+*Configuration : OPENAM-13* | OPENIG-5*
