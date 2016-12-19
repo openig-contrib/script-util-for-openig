@@ -38,6 +38,7 @@ response.entity = """
         #double li  { width:50%; }
         </style>
         <link rel='icon' type='image/png' href='https://forgerock.org/ico/favicon-196x196.png' />
+        <meta charset='utf-8'/>
         <title>Welcome to ForgeShop</title>
     </head>
     <body>
