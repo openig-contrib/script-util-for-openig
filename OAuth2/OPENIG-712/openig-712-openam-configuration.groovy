@@ -238,7 +238,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println """(DEBUG)Create OAUTH2 policy: ${resp.entity.content.text}"""
+        println """(DEBUG)Create OAuth2 policy: ${resp.entity.content.text}"""
     }
 }
 
