@@ -11,12 +11,10 @@ your installation. If they are not, change them and save the script.
 **STEP-2**: With OpenAM running, launch the script with the command `$ groovy STS.groovy`.
             The script does the following:
 - Configures OpenAM as described in the user documentation, creating the following items in OpenAM: OAuth2 policy, an agent, the user `george costanza`, a Bearer authentication module, and an instance of REST STS. 
-- Creates the directory `.openig/config` under the directory containing the groovy script. The directory contains OpenIG routes: `config.json` and `routes/id_token.json`.
 - Creates the directory `openig.properties` in your `user.home` directory. The provided OpenIG routes read the `openig.properties` file. By default, you do not need to modify these files.
 
-**STEP-3**: Set up the OpenIG routes in one of the following ways:
-- Create the routes as described in the Gateway Guide chapter on Transforming OpenID Connect ID Tokens Into SAML Assertions.
-- Alternatively, copy `config.json` and `id_token.json` from the `.openig/config` directory under the `STS.groovy` script.
+**STEP-3**: - **Backup your home folder '.openig'**<br>
+            - Copy the provided folder '.openig' to replace it. 
 
 **STEP-4**: Test the configuration
 - Restart OpenIG.
