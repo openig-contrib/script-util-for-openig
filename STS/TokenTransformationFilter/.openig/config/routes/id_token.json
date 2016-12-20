@@ -56,7 +56,7 @@
 			"handler": {
 				"type": "StaticResponseHandler",
 				"config": {
-					"entity": "{\"id_token\":\n\"${attributes.openid.id_token}\"} \n\n\n\n\n\n{\"saml_assertions\":\n\"${attributes.saml_assertions}\"}}",
+					"entity": "{\"id_token\":\n\"${attributes.openid.id_token}\"} \n\n\n\n\n\n{\"saml_assertions\":\n\"${contexts.sts.issuedToken}\"}}",
 					"reason": "Found",
 					"status": 200
 				}
