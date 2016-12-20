@@ -45,7 +45,6 @@
 					"username": "george",
 					"password": "costanza",
 					"idToken": "${attributes.openid.id_token}",
-					"target": "${attributes.saml_assertions}",
 					"instance": "openig",
 					"amHandler": {
 						"type": "ClientHandler"
