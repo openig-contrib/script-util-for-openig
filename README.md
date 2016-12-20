@@ -30,8 +30,7 @@ What am I looking for?
 
 OpenIG Official links
 -----------------------------
-* [Get OpenIG!](https://github.com/ForgeRock/openig)  
-* [OpenIG documentation](https://forgerock.org/documentation/openig/)
+* [Get OpenIG!](https://forgerock.org/openig/)
 * [OpenIG JIRA](https://bugster.forgerock.org/jira/browse/OPENIG)
 * [Forgerock](https://www.forgerock.com/platform/identity-gateway/)
 
