@@ -22,6 +22,8 @@ your installation. If they are not, change them and save the script.
 - Log in as `username: george`, `password: costanza`. The OpenID Connect permissions page is displayed.
 - Allow OpenIG to access your personal information. The open_id token and SAML assertions are displayed. 
 
+![OAuth2/OpenID to saml](https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/STS_openid_to_saml.png)
+
 **SAML2.0 and OAuth2 In a Nutshell:**
 
 - SAML 2.0 is an XML based framework that is used to describe and exchange security information. It can be used for Single     Sign On (SSO), Identity Management, and Federation.
