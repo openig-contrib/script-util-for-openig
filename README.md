@@ -17,18 +17,19 @@ and run the given groovy script to have the OPENIG-5* example ready!
 
 What am I looking for?
 ----------------------------- 
-* [Policy Enforcement Filter(PEF): how to retrieve attributes in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
-* [Policy Enforcement Filter(PEF): how to set environment and retrieve advices in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
-* [Policy Enforcement Filter(PEF): configure OpenAM as a PDP](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/Setting_Up_OpenAM_As_A_PDP.groovy) _(groovy script only)_
+
+* [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
 <br><br>
 * [OAuth2: How to set a NASCAR page, use dynamic client registration and more!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
 * [OAuth2/OpenID: Authenticate through OpenAM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
 <br><br>
+* [Policy Enforcement Filter(PEF): how to retrieve attributes in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
+* [Policy Enforcement Filter(PEF): how to set environment and retrieve advices in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
+* [Policy Enforcement Filter(PEF): configure OpenAM as a PDP](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/Setting_Up_OpenAM_As_A_PDP.groovy) _(groovy script only)_
+<br><br>
+* [UMA](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
+<br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
-<br><br>
-* [AWS: Deploy OpenIG](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
-<br><br>
-* [UMA](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA)_(groovy script only)_
 
 OpenIG Official links
 -----------------------------
