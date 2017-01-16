@@ -27,6 +27,8 @@ What am I looking for?
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 <br><br>
 * [AWS: Deploy OpenIG](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
+<br><br>
+* [UMA](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA)_(groovy script only)_
 
 OpenIG Official links
 -----------------------------
