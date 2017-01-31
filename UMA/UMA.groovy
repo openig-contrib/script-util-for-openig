@@ -75,7 +75,9 @@ http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
-    body = '{}'
+    body = """{
+                "requireTrustElevation": false
+            }"""
 
     response.success = { resp, json ->
         println()
@@ -84,7 +86,7 @@ http.request(POST, JSON) { req ->
 
     response.failure = { resp ->
         println()
-        println "(DEBUG)Configure OpenAM for oauth2-oidc: ${resp.entity.content.text}" }
+        println "(DEBUG)Configure OpenAM for UMA: ${resp.entity.content.text}" }
 }
 
 def oauth2ResourceTypeUuid
