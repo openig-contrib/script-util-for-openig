@@ -1,0 +1,65 @@
+{
+	"heap": [{
+		"name": "dispatcher",
+		"type": "DispatchHandler",
+		"config": {
+			"bindings": [{
+				"handler": {
+					"type": "Chain",
+					"config": {
+						"filters": [{
+							"type": "OAuth2ClientFilter",
+							"config": {
+								"clientEndpoint": "/openid",
+								"failureHandler": {
+									"name": "static-openid-failure-handler",
+									"type": "StaticResponseHandler",
+									"config": {
+										"comment": "Trivial failure handler for debugging only",
+										"status": 500,
+										"reason": "Error",
+										"entity": "An error occurred:  ${attributes.openid.error.error_description} (${attributes.openid.error.error})"
+									}
+								},
+								"registrations": ["ForgeShop-Connect2id"],
+								"requireHttps": false,
+								"requireLogin": true,
+								"target": "${attributes.openid}"
+							}
+						}],
+						"handler": {
+							"name": "display-user-info-groovy-handler",
+							"type": "ScriptableHandler",
+							"comment": "Displays the user info after logging.",
+							"config": {
+								"type": "application/x-groovy",
+								"file": "forgeshop-loggedin.groovy"
+							}
+						}
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "ForgeShop-Connect2id",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": {
+				"name": "connect2id",
+				"type": "Issuer",
+				"config": {
+					"wellKnownEndpoint": "${readProperties(system['user.home'].concat('/openig.properties'))['connect2IdUrl'].concat('/c2id/.well-known/openid-configuration')}"
+				}
+			},
+			"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['clientId']}",
+			"scopes": [
+				"openid", "profile", "phone_number", "address"
+			],
+			"tokenEndpointAuthMethod": "private_key_jwt",
+			"token_endpoint_auth_signing_alg": "RS256",
+			"jwkFile": "${readProperties(system['user.home'].concat('/openig.properties'))['openigRouteLocation'].concat('/jwkFile.txt')}"
+		}
+	}],
+	"handler": "dispatcher",
+	"condition": "${matches(request.uri.path, '^/openid')}"
+}
