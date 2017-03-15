@@ -1,4 +1,3 @@
-import static groovyx.net.http.ContentType.JSON
 @Grab(group = 'org.codehaus.groovy.modules.http-builder', module = 'http-builder', version = '0.7.1')
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
