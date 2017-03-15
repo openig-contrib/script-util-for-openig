@@ -22,6 +22,7 @@ What am I looking for?
 <br><br>
 * [OAuth2: How to set a NASCAR page, use dynamic client registration and more!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
 * [OAuth2/OpenID: Authenticate through OpenAM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
+* [OAuth2/OpenID: Authenticate using private_key_jwt](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/private_key_jwt)
 <br><br>
 * [Policy Enforcement Filter(PEF): how to retrieve attributes in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
 * [Policy Enforcement Filter(PEF): how to set environment and retrieve advices in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
