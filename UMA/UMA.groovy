@@ -7,15 +7,15 @@ import static groovyx.net.http.Method.GET
 import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
-// This script is use to configure your OPENAM for UMA
+// Use this script to configure OPENAM for the UMA example ig the Gateway Guide
 // # tested with OpenAM 13.5.0 Build 550cfe7d60 (2016-July-13 08:43)
 // # vrom - 16 01 2017
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String openamUrl = "http://openam.example.com:8088/openam" // URL must NOT end with a slash
 final String amadmin = 'amadmin'
-final String adadminpassword = "secret12"
+final String adadminpassword = "password"
 // Following properties are for the doc example - DO NOT CHANGE!
 final String agentShare = "OpenIG"
 final String agentSharePassword = "password"
