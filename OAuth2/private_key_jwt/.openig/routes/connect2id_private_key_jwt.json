@@ -57,7 +57,7 @@
 			],
 			"tokenEndpointAuthMethod": "private_key_jwt",
 			"token_endpoint_auth_signing_alg": "RS256",
-			"jwkFile": "${readProperties(system['user.home'].concat('/openig.properties'))['openigRouteLocation'].concat('/jwkFile.txt')}"
+			"jwk": "<copy the private key>"
 		}
 	}],
 	"handler": "dispatcher",

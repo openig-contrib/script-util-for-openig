@@ -32,6 +32,8 @@ JWK jwk = RSAKeyMaker.make(512, KeyUse.SIGNATURE, JWSAlgorithm.parse("RS256"), "
 publicKey =  jwk.toPublicJWK()
 println ""
 println "---- key/pair RS256 - 512 generated ----"
+
+keyPair = jwk.toJSONObject().toJSONString()
 println "OK...key/pair RS256 - 512 generated successfully"
 println ""
 keyPair = jwk.toJSONObject().toJSONString()
@@ -67,7 +69,6 @@ http.request(POST, JSON) { req ->
 
 // Create a properties file according to your configuration.
 // This file will be used in your route to access the different values.
-
 println "---- Creating file properties ----"
 final Properties props = new Properties()
 final File propsFile = new File(pathPropsFile + "/openig.properties")
@@ -80,11 +81,6 @@ props.store(propsFile.newWriter(), "Properties file generated for private_key_jw
 println()
 println "OK...Created properties file in >>${pathPropsFile}.<<"
 println()
-
-// Write the file containing the keypair
-println "---- Creating key pair file ----"
-def keyPairFile = new File(openigRouteLocation + '/jwkFile.txt')
-keyPairFile.write(keyPair)
-println "OK...Created keypair file in >>${openigRouteLocation}<<"
+println "Note: The private key must be c/p to the route file<<"
 
 
