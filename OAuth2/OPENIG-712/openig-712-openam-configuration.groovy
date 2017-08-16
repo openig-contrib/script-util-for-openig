@@ -5,7 +5,7 @@ import static groovyx.net.http.Method.POST
 import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
-// This script is use to configure your OPENAM according to OPENIG-712
+// This script is used to configure your OPENAM according to OPENIG-712
 // https://bugster.forgerock.org/jira/browse/OPENIG-712
 // # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
 // # vrom 2016

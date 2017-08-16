@@ -10,7 +10,7 @@ import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
 
 // -----------------------------------------------------------------------------------------------------
-// This script is use to configure your OpenIG according to your Connect2Id configuration
+// This script is used to configure your OpenIG according to your Connect2ID configuration
 // # vrom 2017
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)

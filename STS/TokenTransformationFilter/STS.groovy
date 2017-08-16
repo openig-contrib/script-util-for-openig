@@ -6,7 +6,7 @@ import static groovyx.net.http.Method.POST
 import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
-// This script is use to configure your OPENAM for STS
+// This script is used to configure your OPENAM for STS
 // # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
 // # vrom - 07 01 2016
 // -----------------------------------------------------------------------------------------------------
