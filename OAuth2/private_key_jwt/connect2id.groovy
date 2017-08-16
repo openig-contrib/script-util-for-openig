@@ -26,14 +26,12 @@ final String openigRouteLocation = "${pathPropsFile}/.openig/config/routes"
 def http
 def clientId
 def publicKey
-def keyPair
-// Generates first a KeyPair:
-JWK jwk = RSAKeyMaker.make(512, KeyUse.SIGNATURE, JWSAlgorithm.parse("RS256"), "sig")
+
+final JWK jwk = RSAKeyMaker.make(512, KeyUse.SIGNATURE, JWSAlgorithm.parse("RS256"), "sig")
 publicKey =  jwk.toPublicJWK()
 println ""
 println "---- key/pair RS256 - 512 generated ----"
-
-println(jwk.toJSONObject().toJSONString());
+println(jwk.toJSONObject().toJSONString())
 println "----------------------------------------"
 println ""
 
