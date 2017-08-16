@@ -33,13 +33,12 @@ publicKey =  jwk.toPublicJWK()
 println ""
 println "---- key/pair RS256 - 512 generated ----"
 
-keyPair = jwk.toJSONObject().toJSONString()
-println "OK...key/pair RS256 - 512 generated successfully"
+println(jwk.toJSONObject().toJSONString());
+println "----------------------------------------"
 println ""
-keyPair = jwk.toJSONObject().toJSONString()
 
 // Creates the client on Connect2id
-println "---- Creating client connect2id ----"
+println "------ Creating client connect2id ------"
 http = new HTTPBuilder("${connect2IdUrl}/c2id/clients")
 http.request(POST, JSON) { req ->
     headers.'Content-Type' = 'application/json'
