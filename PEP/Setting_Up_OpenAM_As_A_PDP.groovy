@@ -38,7 +38,7 @@ http.request(POST, JSON) { req ->
 
     response.success = { resp, json ->
         println(json)
-        SSOToken = json.tokenId;
+        SSOToken = json.tokenId
     }
 
     response.failure = { resp -> println "(DEBUG)Unable to create token: ${resp.entity.content.text}" }

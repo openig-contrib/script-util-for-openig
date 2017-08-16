@@ -33,7 +33,7 @@ final String oidc_issuer = "oidc"
 // Create a properties file according to your configuration.
 // This file will be used in your route to access the different values.
 final Properties props = new Properties()
-final String pathPropsFile = System.getProperty("user.home");
+final String pathPropsFile = System.getProperty("user.home")
 final File propsFile = new File(pathPropsFile + "/openig.properties")
 props.setProperty("openigBase", openigBase)
 props.setProperty("openamUrl", openamUrl)
@@ -42,8 +42,8 @@ println()
 println "(DEBUG)Created properties file in >>${pathPropsFile}.<<"
 println()
 
-def SSOToken;
-def http;
+def SSOToken
+def http
 // Request to get an SSOToken
 http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
@@ -55,7 +55,7 @@ http.request(POST, JSON) { req ->
 
     response.success = { resp, json ->
         println(json)
-        SSOToken = json.tokenId;
+        SSOToken = json.tokenId
     }
 
     response.failure = { resp ->
@@ -107,7 +107,7 @@ http.request(POST, JSON) { req ->
 
     response.success = { resp, json ->
         println()
-        oauth2ResourceType = json.uuid;
+        oauth2ResourceType = json.uuid
         println(json)
     }
 

@@ -19,8 +19,8 @@ import static groovyx.net.http.Method.POST
 final String openigBase = "http://openig.example.com:8082"  // URL must NOT end with a slash - no localhost URI
 final String connect2IdUrl = "http://127.0.0.1:8080"        // URL must NOT end with a slash - no localhost URI
 final String redirectionUri = "${openigBase}/openid/callback"
-final String pathPropsFile = System.getProperty("user.home");
-final String openigRouteLocation = "${pathPropsFile}/.openig/config/routes";
+final String pathPropsFile = System.getProperty("user.home")
+final String openigRouteLocation = "${pathPropsFile}/.openig/config/routes"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 def http
@@ -28,7 +28,7 @@ def clientId
 def publicKey
 def keyPair
 // Generates first a KeyPair:
-JWK jwk = RSAKeyMaker.make(512, KeyUse.SIGNATURE, JWSAlgorithm.parse("RS256"), "sig");
+JWK jwk = RSAKeyMaker.make(512, KeyUse.SIGNATURE, JWSAlgorithm.parse("RS256"), "sig")
 publicKey =  jwk.toPublicJWK()
 println ""
 println "---- key/pair RS256 - 512 generated ----"
@@ -57,7 +57,7 @@ http.request(POST, JSON) { req ->
 
     response.success = { resp, json ->
         println(json)
-        clientId = json.client_id;
+        clientId = json.client_id
         println "OK...Created client: >>${clientId}<<"
     }
 

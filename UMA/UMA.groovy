@@ -24,8 +24,8 @@ final String agentAccessPassword = "password"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-def SSOToken;
-def http;
+def SSOToken
+def http
 // Request to get an SSOToken
 http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
@@ -37,7 +37,7 @@ http.request(POST, JSON) { req ->
 
     response.success = { resp, json ->
         println(json)
-        SSOToken = json.tokenId;
+        SSOToken = json.tokenId
     }
 
     response.failure = { resp ->
