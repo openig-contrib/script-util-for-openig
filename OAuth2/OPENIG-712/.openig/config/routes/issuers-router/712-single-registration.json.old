@@ -33,7 +33,7 @@
 			"scopes": [
 				"openid", "profile", "address", "phone"
 			],
-			"tokenEndpointUseBasicAuth": true
+			"tokenEndpointAuthMethod": "client_secret_basic"
 		}
 	}],
 	"handler": "dispatcher",
