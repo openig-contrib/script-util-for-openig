@@ -14,7 +14,7 @@ This script configures the policy set and policy to protect the resource: `/pep-
 <br> It also creates a 'openig.properties' in your `user.home` directory used by OpenIG json configuration files.
 <br>
  - In this sample, the OPENAM policy about the URL: 
-    `http://localhost:8082/pep-policy-attributes`, allows access to all registered users and returns within its response the given
+    `http://openig.example.com:8082/pep-policy-attributes`, allows access to all registered users and returns within its response the given
     and pre-configured policy settings: the **subject's "cn" and "dn" profile attributes**.
 
     You can retrieve these attribute when using **OPENIG**: in `${contexts.policyDecision.attributes.dn}` or `${contexts.policyDecision.attributes.cn}`
@@ -22,7 +22,7 @@ This script configures the policy set and policy to protect the resource: `/pep-
 **STEP-2**: Backup your home folder '.openig'<br>
             Copy the provided folder '.openig' to replace it.                        
 
-**STEP-3**: Launch OpenIG and check on the url `<openig-url>/pep-policy-attributes` (example: http://localhost:8082/pep-policy-attributes)<br>
+**STEP-3**: Launch OpenIG and check on the url `<openig-url>/pep-policy-attributes` (example: http://openig.example.com:8082/pep-policy-attributes)<br>
             The "Policy Enforcement Filter" gives you access to the resource where the given attributes are returned.<br>
             You can change the 'condition' of the route to check that the policy denies access to other resources.
         

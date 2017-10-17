@@ -16,7 +16,7 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
             Copy the provided folder '.openig' to replace it.
 
 **STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid' <br>
-            example: `http://localhost:8082/openid`
+            example: `http://openig.example.com:8082/openid`
 
 **Four route examples available** in the issuers/routers folder which should cover the different OIDC configurations:<br>
 - dynamic registration only

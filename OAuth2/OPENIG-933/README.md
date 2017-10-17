@@ -18,7 +18,7 @@ a user `gabby/secret12`.
             Copy the provided folder '.openig' to replace it.
 
 **STEP-3**: Launch OpenIG and check on the url '<openig-url>/openid' 
-(example: `http://localhost:8082/openid`)
+(example: `http://openig.example.com:8082/openid`)
 
 
 **Behind the scenes:**

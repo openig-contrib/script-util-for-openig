@@ -8,14 +8,13 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM - Creating an application and a policy
 // According to OPENIG-824. It will create application and policy
-// # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
-// # vrom 2016
+// # tested with AM-5.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String openigBase = "http://openig.example.com:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://openam.example.com:8090/openam" // URL must NOT end with a slash
 final String user = "amadmin"                 // If you modify these fields, modify your route file accordingly
 final String userpass = "secret12"
 final String resourceToProtect = "${openigBase}/pep-policy-attributes"

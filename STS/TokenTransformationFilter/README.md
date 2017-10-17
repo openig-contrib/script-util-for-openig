@@ -18,7 +18,7 @@ your installation. If they are not, change them and save the script.
 
 **STEP-4**: Test the configuration
 - Restart OpenIG.
-- Access the route, for example `http://localhost:8082/id_token` => The OpenAM login page is displayed.
+- Access the route, for example `http://openig.example.com:8082/id_token` => The OpenAM login page is displayed.
 - Log in as `username: george`, `password: costanza`. The OpenID Connect permissions page is displayed.
 - Allow OpenIG to access your personal information. The open_id token and SAML assertions are displayed. 
 

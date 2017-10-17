@@ -7,14 +7,13 @@ import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM for STS
-// # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
-// # vrom - 07 01 2016
+// # tested with AM-5.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String openigBase = "http://openig.example.com:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://openam.example.com:8090/openam" // URL must NOT end with a slash
 final String user = 'amadmin'
 final String userPass = "secret12"
 // Following properties are for the doc example - if you modify them, you MUST modify the 'id_token' route.

@@ -33,13 +33,13 @@ if (environment) {
 Verify that your OpenAM-13 gets the modifications. (Check application/policy)
 <br>        
 
- - In this sample, the policy that applies to the URI: '`http://localhost:8082/pep-advices`'
+ - In this sample, the policy that applies to the URI: '`http://openig.example.com:8082/pep-advices`'
   
 **STEP-2**: - **Backup your home folder '.openig'**<br>
             - Copy the provided folder '.openig' to replace it.                    
 
 **STEP-3**: Launch OpenIG and check on the url '<openig-url>/pep-advices'<br>
-example: `http://localhost:8082/pep-advices`
+example: `http://openig.example.com:8082/pep-advices`
 <br><br>
 You should **NOT access to the resource** but you can <u>see the returned <b>advices</b></u>.<br>
 <br>

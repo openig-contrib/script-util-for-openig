@@ -7,21 +7,20 @@ import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM - As described in Gateway Guide 6.3
-// # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
-// # vrom 07/07/2016
+// # tested with AM 5.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 final String user = "amadmin"
 final String userPassword = "secret12"
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
-final String resourceToProtect = "http://localhost:8081/pep"
+final String openamUrl = "http://openam.example.com:8090/openam" // URL must NOT end with a slash
+final String resourceToProtect = "http://app.example.com:8081/pep"
 
 // EXAMPLE CONFIGURATION
 // -----------------------------------------------------------------------------------------------------
 final String applicationName = "iPlanetAMWebAgentService"
 final String policyName = "Policy for OpenIG as PEP"
-final String description = "See Gateway Guide 6.3. Setting Up OpenAM As a PDP"
+final String description = "See Gateway Guide- AM As a PDP"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------

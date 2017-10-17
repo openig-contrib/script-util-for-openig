@@ -8,14 +8,13 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM according to OPENIG-933
 // https://bugster.forgerock.org/jira/browse/OPENIG-933
-// # tested with OpenAM 13.0.0 Build 5d4589530d (2016-January-14 21:15)
-// # vrom 2016
+// # tested with AM-5.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
 
-final String openigBase = "http://localhost:8082"       // URL must NOT end with a slash
-final String openamUrl = "http://localhost:8090/openam" // URL must NOT end with a slash
+final String openigBase = "http://openig.example.com:8082"       // URL must NOT end with a slash
+final String openamUrl = "http://openam.example.com:8090/openam" // URL must NOT end with a slash
 final String user = "amadmin"
 final String userPass = "secret12"
 final String agentName = "ForgeShop"

@@ -8,7 +8,7 @@ curl \
  --header "X-OpenAM-Password: password" \
  --header "Content-Type: application/json" \
  --data "{}" \
-  http://localhost:8090/openam/json/authenticate
+  http://openam.example.com:8090/openam/json/authenticate
   
 ----------------------------------------------------------------------------------------------------------------------------------------
 >>>> CREATING APPLICATION
@@ -57,7 +57,7 @@ curl \
             "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
     ]
 }' \
-http://localhost:8090/openam/json/applications/?_action=create
+http://openam.example.com:8090/openam/json/applications/?_action=create
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 >>>> CREATING POLICY
@@ -78,7 +78,7 @@ curl \
         "DELETE": true
     },
     "resources": [
-        "http://localhost:8082/pep-policy-attributes"
+        "http://openig.example.com:8082/pep-policy-attributes"
     ],     
     "subject": {
         "type": "AuthenticatedUsers"
@@ -95,7 +95,7 @@ curl \
     ],
     "resourceTypeUuid": "76656a38-5f8e-401b-83aa-4ccb74ce88d2"
  }' \
- http://localhost:8090/openam/json/policies?_action=create
+ http://openam.example.com:8090/openam/json/policies?_action=create
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 >>>> CHECK POLICY OK
@@ -107,18 +107,18 @@ curl \
  --header "Content-Type: application/json" \
  --data '{
     "resources": [
-        "http://localhost:8082/pep-policy-attributes"
+        "http://openig.example.com:8082/pep-policy-attributes"
     ],
     "application": "pep-application-attributes"
  }' \
-http://localhost:8090/openam/json/policies?_action=evaluate
+http://openam.example.com:8090/openam/json/policies?_action=evaluate
 
 <<<< SHOULD RETURN:
 
 [{
 	"advices": {},
 	"ttl": 9223372036854775807,
-	"resource": "http://localhost:8082/pep-policy-attributes",
+	"resource": "http://openig.example.com:8082/pep-policy-attributes",
 	"actions": {
 		"DELETE": true,
 		"POST": true,
@@ -141,20 +141,20 @@ curl \
  --header "Content-Type: application/json" \
  --data '{
     "resources": [
-        "http://localhost:8082/pep"
+        "http://openig.example.com:8082/pep"
     ]
  }' \
-http://localhost:8090/openam/json/policies?_action=evaluate
+http://openam.example.com:8090/openam/json/policies?_action=evaluate
 
 <<<< SHOULD RETURN: 
 
 [{
 	"advices": {},
     "resources": [
-        "http://localhost:8082/pep"
+        "http://openig.example.com:8082/pep"
     ]
 	"ttl": 9223372036854775807,
-	"resource": "http://localhost:8082/pep",
+	"resource": "http://openig.example.com:8082/pep",
 	"actions": {},
 	"attributes": {}
 }]

@@ -32,7 +32,7 @@ What am I looking for?
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
-OpenIG Official links
+OpenIG Official
 -----------------------------
 * [Get OpenIG!](https://forgerock.org/openig/)
 * [OpenIG JIRA](https://bugster.forgerock.org/jira/browse/OPENIG)
