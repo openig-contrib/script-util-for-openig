@@ -1,4 +1,4 @@
-Forgerock Identity Gateway routes examples
+Forgerock Identity Gateway route examples
 ======
 
 This repository contains short and simple routes for [**Forgerock Identity Gateway(IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
@@ -46,5 +46,3 @@ Disclaimer
 This project is not supported by ForgeRock AS.
 
 ----------
-
-*Configuration : AM-5.5.0 | IG-5.5.0
