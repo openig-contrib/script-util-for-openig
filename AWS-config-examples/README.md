@@ -32,4 +32,4 @@ Even if I tested it, I strongly suggest you to have a look before launching it. 
 
 ----------
 
-**Configuration : AM-5.5.0 | IG 5.5.0
+**Configuration:** AM-5.5.0 | IG 5.5.0

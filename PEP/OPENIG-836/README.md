@@ -62,4 +62,4 @@ then, by calling again the URI  `/pep-advices`, then you will have access to the
 
 ----------
 
-*Configuration : AM-5.5.0 | IG-5.5.0
+**Configuration:** AM-5.5.0 | IG-5.5.0

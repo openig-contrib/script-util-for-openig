@@ -22,4 +22,4 @@ The script does the following:
 * [Gateway Guide](https://backstage.forgerock.com/docs/openig/5.0/gateway-guide#chap-uma)
 ----------
 
-*Configuration : OPENAM-13.5 | OPENIG-5*
+**Configuration:** OPENAM-13.5 | OPENIG-5*
