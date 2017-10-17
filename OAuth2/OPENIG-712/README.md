@@ -2,7 +2,7 @@ OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
 ======
 ----------
 
-**These examples show how to configure OpenIG to use OpenID Connect discovery and dynamic client registration with 'supportedDomains'.**
+**These routes show how to configure OpenIG to use OpenID Connect discovery and dynamic client registration with 'supportedDomains'.**
 
 ----------
 
