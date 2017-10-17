@@ -44,4 +44,4 @@ _note:_
 
 ----------
 
-*Configuration : AM-5.5.0 | IG-5.5.0
+**Configuration:** AM-5.5.0 | IG-5.5.0
