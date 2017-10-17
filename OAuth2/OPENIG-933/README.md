@@ -47,4 +47,4 @@ should be much larger than your access token lifetime(but should be adapted acco
 
 ----------
 
-*Configuration : OPENAM-13 | OPENIG-5*
+*Configuration : AM-5.5.0 | IG-5.5.0

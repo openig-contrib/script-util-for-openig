@@ -46,4 +46,4 @@ This project is not supported by ForgeRock AS.
 
 ----------
 
-*Configuration : OPENAM-13* | OPENIG-5*
+*Configuration : AM-5.5.0 | IG-5.5.0
