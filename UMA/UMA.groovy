@@ -14,7 +14,7 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 final String openamUrl = "http://openam.example.com:8088/openam" // URL must NOT end with a slash
 final String amadmin = 'amadmin'
-final String adadminpassword = "password"
+final String amadminPassword = "password"
 // Following properties are for the doc example - DO NOT CHANGE!
 final String agentShare = "OpenIG"
 final String agentSharePassword = "password"
@@ -29,7 +29,7 @@ def http
 http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = amadmin
-    headers.'X-OpenAM-Password' = adadminpassword
+    headers.'X-OpenAM-Password' = amadminPassword
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = ''
