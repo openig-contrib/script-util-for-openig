@@ -1,26 +1,17 @@
-OPENIG' configuration examples
+Forgerock Identity Gateway routes examples
 ======
 
-This repository contains short and simple samples on how to configure **OpenIG**
-to use **Policy Enforcement Filter**(PEP/PEF), **OAuth2** **with OpenAM(13+)** or **TokenTransformationFilter**(TTF).
+This repository contains short and simple routes for [**Forgerock Identity Gateway(IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
 
-In all these examples, **OPENAM** acts as a policy decision point(for the PEF) or as an an OpenID Provider/AS(for OAuth2) or REST STS instance(for TTF).
-
-How to configure OpenAM?
------------------------------
-
-**Don't panic!**
-
-Groovy scripts are provided to help you to configure your OpenAM-13+ quickly. This means you only have to install an OPENAM,
-and run the given groovy script to have the OPENIG-5* example ready!
-<br>
+An install of [**Forgerock Access Management(AM)**](https://backstage.forgerock.com/downloads/OpenAM/Access%20Management/5.1.1/AM%20Zip/zip#list) is also required to perform authentication/authorization examples. 
 
 What am I looking for?
 ----------------------------- 
 
 * [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
 <br><br>
-* [OAuth2: How to set a NASCAR page, use dynamic client registration and more!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
+* [OAuth2: NASCAR page - Authenticate through AM, Google, MSN or LinkedIn](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
+* [OAuth2: Discovery](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
 * [OAuth2/OpenID: Authenticate through OpenAM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
 * [OAuth2/OpenID: Authenticate using private_key_jwt](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/private_key_jwt)
 <br><br>
@@ -32,10 +23,20 @@ What am I looking for?
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
-OpenIG Official
+
+How to configure OpenAM?
 -----------------------------
-* [Get OpenIG!](https://forgerock.org/openig/)
-* [OpenIG JIRA](https://bugster.forgerock.org/jira/browse/OPENIG)
+
+**Don't panic!**
+
+There are Groovy scripts provided for each example to help you to configure your AM-13+/5+ quickly. 
+<br>
+
+Official links
+-----------------------------
+* [Get Forgerock Identity Gateway(IG)!](https://www.forgerock.com/platform/identity-gateway/)
+* [Get Forgerock Access Management(AM)!](https://www.forgerock.com/platform/access-management/)
+* [IG JIRA](https://bugster.forgerock.org/jira/browse/OPENIG)
 * [Forgerock](https://www.forgerock.com/platform/identity-gateway/)
 
 
