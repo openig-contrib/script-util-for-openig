@@ -2,7 +2,7 @@ OPENIG-824 Use the "Policy Enforcement Filter" and retrieve back given "attribut
 ======
 ----------
 
-**This example shows how to configure OPENIG and the policy enforcement filter to retrieve the attributes returned with the policy decision **
+**This example shows how to configure OPENIG and the policy enforcement filter to retrieve the attributes returned with the policy decision**
 
 ----------
 
@@ -23,8 +23,9 @@ This script configures the policy set and policy to protect the resource: `/pep-
             Copy the provided folder '.openig' to replace it.                        
 
 **STEP-3**: Launch OpenIG and check on the url `<openig-url>/pep-policy-attributes` (example: http://openig.example.com:8082/pep-policy-attributes)<br>
-            The "Policy Enforcement Filter" gives you access to the resource where the given attributes are returned.<br>
-            You can change the 'condition' of the route to check that the policy denies access to other resources.
+            The **Policy Enforcement Filter** gives you access to the resource where the given attributes are returned.<br>
+            <br>
+            You can change the condition of the route to verify that the policy denies access to other resources.
         
 ----------        
 * [Documentation](https://forgerock.org/openig/doc/bootstrap/gateway-guide/index.html#chap-pep)
