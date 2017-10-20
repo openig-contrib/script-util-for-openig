@@ -19,7 +19,7 @@ What am I looking for?
 * [Policy Enforcement Filter(PEF): how to set environment and retrieve advices in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
 * [Policy Enforcement Filter(PEF): configure OpenAM as a PDP](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/Setting_Up_OpenAM_As_A_PDP.groovy) _(groovy script only)_
 <br><br>
-* [UMA](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
+* [UMA 1.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
