@@ -1,15 +1,10 @@
-UMA — Supporting UMA Resource Servers
+IG provides for building a User-Managed Access (UMA 1.0) resource server.
 ======
-----------
+**STEP-1**: Launch your AM.
 
-**Configure automatically your OpenAM for IG documentation test case.**
-
-----------
-**STEP-1**: Launch your OpenAM.
-
-**STEP-2**: Open `UMA.groovy` and check that the parameters in the first section, CONFIGURATION, are correct for
+**STEP-2**: Open `UMA-1.0.groovy` and check that the parameters in the first section, CONFIGURATION, are correct for
 your installation. If they are not, change them and save the script.
-- Launch the script with the command `$ groovy UMA.groovy`.
+- Launch the script with the command `$ groovy UMA-1.0.groovy`.
 
 The script does the following:
 - create the users Alice and Bob.
@@ -19,7 +14,7 @@ The script does the following:
 **STEP-3**: Test the configuration by following the documentation.
 
 ----------
-* [Gateway Guide](https://backstage.forgerock.com/docs/openig/5.0/gateway-guide#chap-uma)
+* [IG Gateway Guide for UMA](https://backstage.forgerock.com/docs/openig/5.0/gateway-guide#chap-uma)
 ----------
 
-**Configuration:** OPENAM-13.5 | OPENIG-5*
+**Configuration:** OPENAM-13.5 | OPENIG-5
