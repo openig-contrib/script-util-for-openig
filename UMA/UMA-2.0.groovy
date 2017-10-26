@@ -326,7 +326,7 @@ http.request(PUT, JSON) { req ->
 }
 
 http = new HTTPBuilder("${openamUrl}/json/agents/?_action=create")
-createAgent(http, SSOToken, agentShare, agentSharePassword, "uma_protection")
+createAgent(http, SSOToken, agentShare, agentSharePassword, "openid")
 createAgent(http, SSOToken, agentAccess, agentAccessPassword, "uma_authorization")
 
 // -----------------------------------------------------------------------------------------------------
