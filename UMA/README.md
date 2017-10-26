@@ -6,7 +6,7 @@ IG provides for building a User-Managed Access (UMA 1.0) resource server.
 - For OpenAM < **14 or AM 5.0**, use `UMA-1.0.groovy` and check that the parameters in the first section, 
 CONFIGURATION, are correct for your installation. If they are not, change them and save the script.
 
-- For AM >= **5.5**, - For OpenAM < 14, Open `UMA-2.0.groovy`.
+- For AM >= **5.5**, open `UMA-2.0.groovy` and change it according ot your configuration.
 
 - Launch the script with the command `$ groovy UMA-1.0.groovy` or `$ groovy UMA-2.0.groovy`.
 
