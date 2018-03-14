@@ -1,0 +1,45 @@
+{
+	"heap": [{
+		"name": "AmService",
+		"type": "AmService",
+		"config": {
+			"url": "http://openam.example.com:8090/openam",
+			"realm": "/",
+			"ssoTokenHeader": "iPlanetDirectoryPro",
+			"version": "6.0",
+			"amHandler": {
+				"type": "Delegate",
+				"config": {
+					"delegate": "ForgeRockClientHandler"
+				},
+				"capture": ["REQUEST", "RESPONSE"]
+			}
+		}
+	}],
+	"handler": {
+		"type": "Chain",
+		"config": {
+			"filters": [{
+				"name": "SingleSignOnFilter",
+				"type": "SingleSignOnFilter",
+				"config": {
+					"amService": "AmService"
+				}
+			}, {
+				"name": "UserProfileFilter",
+				"type": "UserProfileFilter",
+				"config": {
+					"amService": "AmService"
+				}
+			}],
+			"handler": {
+				"type": "ScriptableHandler",
+				"config": {
+					"type": "application/x-groovy",
+					"file": "userprofile.groovy"
+				}
+			}
+		}
+	},
+	"condition": "${matches(request.uri.path, '/userProfile')}"
+}
