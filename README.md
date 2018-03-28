@@ -26,6 +26,9 @@ What am I looking for?
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
+> **Note: that IG is now launched in PRODUCTION MODE by default**<br>
+Don't forget to change it to DEVELOPMENT to access Studio or for editing routes.
+<br>**Tip:** You can run IG with java -jar start.jar -Dig.run.mode=development
 
 How to configure OpenAM?
 -----------------------------
