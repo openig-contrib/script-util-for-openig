@@ -1,14 +1,14 @@
-Forgerock Identity Gateway route examples
+Forgerock Identity Gateway amazing route samples!
 ======
 
 This repository contains short and simple routes for [**Forgerock Identity Gateway(IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
 
 An install of [**Forgerock Access Management(AM)**](https://backstage.forgerock.com/downloads/OpenAM/Access%20Management/5.1.1/AM%20Zip/zip#list) is also required to perform authentication/authorization examples. 
 
-What am I looking for?
+What does IG do? What can I do with IG?
 ----------------------------- 
 
-* [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)
+* [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)_(scripts and utilities)_
 <br><br>
 * [OAuth2: NASCAR page - Authenticate through AM, Google, MSN or LinkedIn](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
 * [OAuth2: Discovery](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
@@ -31,12 +31,12 @@ What am I looking for?
 Don't forget to change it to DEVELOPMENT to access Studio or for editing routes.
 <br>**Tip:** You can run IG with java -jar start.jar -Dig.run.mode=development
 
-How to configure OpenAM?
+How to configure OpenAM??? I just want to try...
 -----------------------------
 
 **Don't panic!**
 
-There are Groovy scripts provided for each example to help you to configure your AM-13+/5+ quickly. 
+There are Groovy scripts provided for each example to help you to configure your AM quickly. 
 <br>
 
 Official links
