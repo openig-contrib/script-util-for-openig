@@ -1,0 +1,58 @@
+{
+	"heap": [{
+		"name": "AmService",
+		"type": "AmService",
+		"config": {
+			"url": "http://openam.example.com:8090/openam",
+			"realm": "/",
+			"ssoTokenHeader": "iPlanetDirectoryPro",
+			"version": "6.0",
+			"amHandler": {
+				"type": "Delegate",
+				"config": {
+					"delegate": "ForgeRockClientHandler"
+				},
+				"capture": "all"
+			}
+		}
+	}],
+	"handler": {
+		"type": "Chain",
+		"config": {
+			"filters": [{
+				"name": "SingleSignOnFilter",
+				"type": "SingleSignOnFilter",
+				"config": {
+					"amService": "AmService"
+				}
+			}, {
+				"name": "UserProfileFilter",
+				"type": "UserProfileFilter",
+				"config": {
+					"amService": "AmService"
+				}
+			}, {
+				"name": "JwtBuilderFilter-1",
+				"type": "JwtBuilderFilter",
+				"config": {
+					"template": {
+						"name": "${contexts.userProfile.commonName}",
+						"email": "${contexts.userProfile.rawInfo.mail[0]}"
+					}
+				}
+			}, {
+				"name": "HeaderFilter-1",
+				"type": "HeaderFilter",
+				"config": {
+					"messageType": "REQUEST",
+					"add": {
+						"x-openig-user": ["${contexts.jwtBuilder.value}"]
+					}
+				}
+			}],
+			"handler": "ReverseProxyHandler"
+		}
+	},
+	"condition": "${matches(request.uri.path, '/home/user')}",
+	"baseURI": "http://app.example.com:8088"
+}
