@@ -22,6 +22,7 @@ What am I looking for?
 * [UMA 1.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 * [UMA 2.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 <br><br>
+* [JwtBuilderFilter(6.1): Passdown AM user information from IG into a header](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/JwtBuilderFilter)
 * [User Profile: Retrieve user information from AM](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/UserProfile)
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
