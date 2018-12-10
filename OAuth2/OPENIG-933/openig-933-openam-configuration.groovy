@@ -44,6 +44,7 @@ http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userPass
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = ''
@@ -63,6 +64,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/users/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -89,6 +91,7 @@ def oauth2ResourceType
 http = new HTTPBuilder("${openamUrl}/json/resourcetypes/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -117,6 +120,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/realm-config/services/oauth-oidc/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -177,6 +181,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -213,6 +218,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -248,6 +254,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/agents/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
