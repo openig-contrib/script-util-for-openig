@@ -47,6 +47,7 @@ http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST,JSON) { req ->
     headers.'X-OpenAM-Username' = user
     headers.'X-OpenAM-Password' = userpass
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = ''
@@ -63,6 +64,7 @@ http.request(POST,JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/applications/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -121,6 +123,7 @@ http.request(POST, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/policies?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{

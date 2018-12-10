@@ -29,6 +29,7 @@ http = new HTTPBuilder("${openamUrl}/json/authenticate")
 http.request(POST, JSON) { req ->
     headers.'X-OpenAM-Username' = amadmin
     headers.'X-OpenAM-Password' = amadminPassword
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = ''
@@ -53,6 +54,7 @@ createUser(http, SSOToken, "Bob")
 http = new HTTPBuilder("${openamUrl}/json/realm-config/services/oauth-oidc")
 http.request(PUT, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """
@@ -292,6 +294,7 @@ http.request(PUT, JSON) { req ->
 http = new HTTPBuilder("${openamUrl}/json/realm-config/services/uma")
 http.request(PUT, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
+    headers.'Accept-Api-Version' = 'resource=2.1'
     headers.'Content-Type' = 'application/json'
     requestContentType = ContentType.JSON
     body = """{
@@ -335,6 +338,7 @@ createAgent(http, SSOToken, agentAccess, agentAccessPassword, "openid")
 private void createUser(HTTPBuilder http, String SSOToken, String name) {
     http.request(POST, JSON) { req ->
         headers.'iPlanetDirectoryPro' = SSOToken
+        headers.'Accept-Api-Version' = 'resource=2.1'
         headers.'Content-Type' = 'application/json'
         requestContentType = ContentType.JSON
         body = """{
@@ -361,6 +365,7 @@ private String getResourceTypeUuid(String openamUrl, String SSOToken, String res
     http = new HTTPBuilder("${openamUrl}/json/resourcetypes/?_queryFilter=name+eq+%22${resourceName}%22&_prettyPrint=true")
     http.request(GET, JSON) { req ->
         headers.'iPlanetDirectoryPro' = SSOToken
+        headers.'Accept-Api-Version' = 'resource=2.1'
         headers.'Content-Type' = 'application/json'
         requestContentType = ContentType.JSON
 
@@ -378,6 +383,7 @@ private String getResourceTypeUuid(String openamUrl, String SSOToken, String res
 private void createAgent(HTTPBuilder http, String SSOToken, String agentName, String agentPassword, String scope) {
     http.request(POST, JSON) { req ->
         headers.'iPlanetDirectoryPro' = SSOToken
+        headers.'Accept-Api-Version' = 'resource=2.1'
         headers.'Content-Type' = 'application/json'
         requestContentType = ContentType.JSON
         body = """{
