@@ -5,7 +5,7 @@ import static groovyx.net.http.Method.POST
 import groovyx.net.http.*
 
 // -----------------------------------------------------------------------------------------------------
-// This script is used to create a user in AM-6.0.0
+// This script is used to create a user in AM-6.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------

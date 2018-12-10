@@ -36,11 +36,11 @@ JwtBuilderFilter: Passdown AM user information from IG into a header
 
  ![JwtBuilderFilter example](https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/jwtBuilderFilter.png)
  <br> <br>
- **NOTE** Signature is available for IG 6.1 and signature then encryption is available in IG 6.5. Follow the doc for further
+ **NOTE** Signature is available for IG-6.1.0 and signature then encryption is available in IG-6.5.0. Follow the doc for further
  details.
 ----------        
 * [Official documentation about the JwtBuilderFilter](https://ea.forgerock.com/docs/ig/reference/index.html#JwtBuilderFilter)
-* [Get the sample application](https://ea.forgerock.com/nightlies/openig/IG-sample-application-6.0.0-SNAPSHOT.jar)
+* [Get the sample application](https://ea.forgerock.com/nightlies/openig/IG-sample-application-7.0.0-SNAPSHOT.jar)
 ----------        
 * [OpenIG-2667](https://bugster.forgerock.org/jira/browse/OPENIG-2667)
 * [OpenIG-2669](https://bugster.forgerock.org/jira/browse/OPENIG-2669)

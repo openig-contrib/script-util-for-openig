@@ -8,7 +8,7 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM - Creating an application and a policy
 // According to OPENIG-824. It will create application and policy
-// # tested with AM-5.5.0
+// # tested with AM-6.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------
