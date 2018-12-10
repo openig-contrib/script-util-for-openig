@@ -9,7 +9,7 @@ import groovyx.net.http.*
 // -----------------------------------------------------------------------------------------------------
 // This script is used to configure your OPENAM according to OPENIG-836
 // https://bugster.forgerock.org/jira/browse/OPENIG-836
-// # tested with AM-5.5.0
+// # tested with AM-6.5.0
 // -----------------------------------------------------------------------------------------------------
 // CONFIGURATION (Update it if necessary)
 // -----------------------------------------------------------------------------------------------------

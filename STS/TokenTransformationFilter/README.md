@@ -39,4 +39,4 @@ OpenIG bridges OAuth 2.0 and SAML frameworks with the Token Transformation Filte
 
 ----------
 
-**Configuration:** AM-5.5.0 | IG 5.5.0
+**Configuration:** AM-6.5.0 | IG 5.5.0
