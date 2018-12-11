@@ -1,6 +1,7 @@
 @Grab(group = 'org.codehaus.groovy.modules.http-builder', module = 'http-builder', version = '0.7.1')
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
+import static groovyx.net.http.Method.PUT
 
 import groovyx.net.http.*
 
@@ -86,54 +87,279 @@ http.request(POST, JSON) { req ->
 
 // Configure OpenAM for oauth2-oidc
 http = new HTTPBuilder("${openamUrl}/json/realm-config/services/oauth-oidc/?_action=create")
-http.request(POST, JSON) { req ->
+http.request(PUT, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
-    headers.'Accept-Api-Version' = 'resource=2.1'
     requestContentType = ContentType.JSON
     body = """{
-                "loaMapping": {},
-                "oidcClaimsScript": "36863ffb-40ec-48b9-94b1-9a99f71cc3b5",
-                "jkwsURI": "",
-                "supportedClaims": ["name|Full name",
-                                    "zoneinfo|Time zone",
-                                    "email|Email address",
-                                    "address|Postal address",
-                                    "locale|Locale",
-                                    "given_name|Given name",
-                                    "phone_number|Phone number",
-                                    "profile|Your personal information",
-                                    "family_name|Family name"],
-                "codeVerifierEnforced": false,
-                "hashSalt": "changeme",
-                "customLoginUrlTemplate": [],
-                "savedConsentAttribute": "myconsent",
-                "responseTypeClasses": ["id_token|org.forgerock.restlet.ext.oauth2.flow.responseTypes.IDTokenResponseType",
-                                        "token|org.forgerock.restlet.ext.oauth2.flow.responseTypes.TokenResponseType",
-                                        "code|org.forgerock.restlet.ext.oauth2.flow.responseTypes.CodeResponseType"],
-                "issueRefreshTokenOnRefreshedToken": true,
-                "claimsParameterSupported": false,
-                "modifiedTimestampAttribute": "modifyTimestamp",
-                "generateRegistrationAccessTokens": false,
-                "refreshTokenLifetime": 60,
-                "allowDynamicRegistration": true,
-                "displayNameAttribute": "cn",
-                "amrMappings": {},
-                "authenticationAttributes": ["uid"],
-                "defaultScopes": ["phone|Your phone number(s)", "address|Your postal address", "email|Your personal email", "openid|", "profile|Your personal information"],
-                "supportedScopes": ["phone|Your phone number(s)", "address|Your postal address", "email|Your personal email", "openid|", "profile|Your personal information"],
-                "createdTimestampAttribute": "createTimestamp",
-                "keypairName": "test",
-                "supportedIDTokenSigningAlgorithms": ["HS256", "HS512", "RS256", "HS384"],
-                "codeLifetime": 60,
-                "accessTokenLifetime": 5,
-                "issueRefreshToken": true,
-                "alwaysAddClaimsToToken": false,
-                "supportedSubjectTypes": ["public"],
-                "defaultACR": [],
-                "jwtTokenLifetime": 600,
-                "scopeImplementationClass": "org.forgerock.openam.oauth2.OpenAMScopeValidator"
-            }"""
+      "_id": "",
+      "_rev": "1920366661",
+      "coreOAuth2Config": {
+        "refreshTokenLifetime": 604800,
+        "accessTokenLifetime": 3600,
+        "usePolicyEngineForScope": false,
+        "codeLifetime": 120,
+        "issueRefreshTokenOnRefreshedToken": false,
+        "issueRefreshToken": false,
+        "statelessTokensEnabled": false
+      },
+      "coreOIDCConfig": {
+        "supportedIDTokenEncryptionMethods": [
+          "A256GCM",
+          "A192GCM",
+          "A128GCM",
+          "A128CBC-HS256",
+          "A192CBC-HS384",
+          "A256CBC-HS512"
+        ],
+        "jwtTokenLifetime": 3600,
+        "supportedClaims": [
+          "phone_number|Phone number",
+          "family_name|Family name",
+          "given_name|Given name",
+          "locale|Locale",
+          "email|Email address",
+          "profile|Your personal information",
+          "zoneinfo|Time zone",
+          "address|Postal address",
+          "name|Full name"
+        ],
+        "supportedIDTokenEncryptionAlgorithms": [
+          "RSA-OAEP",
+          "RSA-OAEP-256",
+          "A128KW",
+          "A256KW",
+          "RSA1_5",
+          "dir",
+          "A192KW"
+        ],
+        "supportedIDTokenSigningAlgorithms": [
+          "PS384",
+          "RS384",
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512",
+          "PS256",
+          "PS512",
+          "RS512"
+        ],
+        "oidcClaimsScript": "36863ffb-40ec-48b9-94b1-9a99f71cc3b5"
+      },
+      "advancedOAuth2Config": {
+        "supportedScopes": [
+          "email|Your email address",
+          "openid|",
+          "address|Your postal address",
+          "phone|Your telephone number(s)",
+          "profile|Your personal information"
+        ],
+        "codeVerifierEnforced": "false",
+        "tokenSigningAlgorithm": "HS256",
+        "authenticationAttributes": [
+          "uid"
+        ],
+        "defaultScopes": [
+          "address",
+          "phone",
+          "openid",
+          "profile",
+          "email"
+        ],
+        "scopeImplementationClass": "org.forgerock.openam.oauth2.OpenAMScopeValidator",
+        "responseTypeClasses": [
+          "code|org.forgerock.oauth2.core.AuthorizationCodeResponseTypeHandler",
+          "id_token|org.forgerock.openidconnect.IdTokenResponseTypeHandler",
+          "device_code|org.forgerock.oauth2.core.TokenResponseTypeHandler",
+          "token|org.forgerock.oauth2.core.TokenResponseTypeHandler"
+        ],
+        "moduleMessageEnabledInPasswordGrant": false,
+        "tokenEncryptionEnabled": false,
+        "grantTypes": [
+          "implicit",
+          "urn:ietf:params:oauth:grant-type:saml2-bearer",
+          "refresh_token",
+          "password",
+          "client_credentials",
+          "urn:ietf:params:oauth:grant-type:device_code",
+          "authorization_code",
+          "urn:ietf:params:oauth:grant-type:uma-ticket"
+        ],
+        "displayNameAttribute": "cn",
+        "supportedSubjectTypes": [
+          "public"
+        ]
+      },
+      "advancedOIDCConfig": {
+        "storeOpsTokens": true,
+        "defaultACR": [],
+        "supportedRequestParameterEncryptionEnc": [
+          "A256GCM",
+          "A192GCM",
+          "A128GCM",
+          "A128CBC-HS256",
+          "A192CBC-HS384",
+          "A256CBC-HS512"
+        ],
+        "claimsParameterSupported": false,
+        "amrMappings": {},
+        "supportedUserInfoEncryptionEnc": [
+          "A256GCM",
+          "A192GCM",
+          "A128GCM",
+          "A128CBC-HS256",
+          "A192CBC-HS384",
+          "A256CBC-HS512"
+        ],
+        "requireRequestUriRegistration": false,
+        "alwaysAddClaimsToToken": false,
+        "supportedUserInfoSigningAlgorithms": [
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512"
+        ],
+        "supportedRequestParameterEncryptionAlgorithms": [
+          "RSA-OAEP",
+          "RSA-OAEP-256",
+          "A128KW",
+          "A256KW",
+          "RSA1_5",
+          "dir",
+          "A192KW"
+        ],
+        "authorisedOpenIdConnectSSOClients": [],
+        "idTokenInfoClientAuthenticationEnabled": true,
+        "supportedRequestParameterSigningAlgorithms": [
+          "PS384",
+          "RS384",
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512",
+          "PS256",
+          "PS512",
+          "RS512"
+        ],
+        "supportedUserInfoEncryptionAlgorithms": [
+          "RSA-OAEP",
+          "RSA-OAEP-256",
+          "A128KW",
+          "A256KW",
+          "RSA1_5",
+          "dir",
+          "A192KW"
+        ],
+        "supportedTokenEndpointAuthenticationSigningAlgorithms": [
+          "PS384",
+          "RS384",
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512",
+          "PS256",
+          "PS512",
+          "RS512"
+        ],
+        "loaMapping": {}
+      },
+      "clientDynamicRegistrationConfig": {
+        "dynamicClientRegistrationSoftwareStatementRequired": false,
+        "dynamicClientRegistrationScope": "dynamic_client_registration",
+        "requiredSoftwareStatementAttestedAttributes": [
+          "redirect_uris"
+        ],
+        "generateRegistrationAccessTokens": true,
+        "allowDynamicRegistration": false
+      },
+      "consent": {
+        "enableRemoteConsent": false,
+        "supportedRcsRequestSigningAlgorithms": [
+          "PS384",
+          "RS384",
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512",
+          "PS256",
+          "PS512",
+          "RS512"
+        ],
+        "supportedRcsResponseSigningAlgorithms": [
+          "PS384",
+          "RS384",
+          "ES384",
+          "HS256",
+          "HS512",
+          "ES256",
+          "RS256",
+          "HS384",
+          "ES512",
+          "PS256",
+          "PS512",
+          "RS512"
+        ],
+        "clientsCanSkipConsent": false,
+        "supportedRcsRequestEncryptionAlgorithms": [
+          "RSA-OAEP",
+          "RSA-OAEP-256",
+          "A128KW",
+          "RSA1_5",
+          "A256KW",
+          "dir",
+          "A192KW"
+        ],
+        "supportedRcsResponseEncryptionMethods": [
+          "A256GCM",
+          "A192GCM",
+          "A128GCM",
+          "A128CBC-HS256",
+          "A192CBC-HS384",
+          "A256CBC-HS512"
+        ],
+        "supportedRcsRequestEncryptionMethods": [
+          "A256GCM",
+          "A192GCM",
+          "A128GCM",
+          "A128CBC-HS256",
+          "A192CBC-HS384",
+          "A256CBC-HS512"
+        ],
+        "supportedRcsResponseEncryptionAlgorithms": [
+          "RSA-OAEP",
+          "RSA-OAEP-256",
+          "A128KW",
+          "A256KW",
+          "RSA1_5",
+          "dir",
+          "A192KW"
+        ]
+      },
+      "deviceCodeConfig": {
+        "devicePollInterval": 5,
+        "deviceCodeLifetime": 300
+      },
+      "_type": {
+        "_id": "oauth-oidc",
+        "name": "OAuth2 Provider",
+        "collection": false
+      }
+    }"""
 
     response.success = { resp, json ->
         println()
@@ -151,7 +377,7 @@ http = new HTTPBuilder("${openamUrl}/json/resourcetypes/?_action=create")
 http.request(POST, JSON) { req ->
     headers.'iPlanetDirectoryPro' = SSOToken
     headers.'Content-Type' = 'application/json'
-    headers.'Accept-Api-Version' = 'resource=2.1'
+    headers.'Accept-Api-Version' = 'resource=1.0'
     requestContentType = ContentType.JSON
     body = """{
                 "name": "OAuth2",
