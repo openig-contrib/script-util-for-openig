@@ -17,8 +17,8 @@ As there is no way to define a specific encryption for the Docker Secrets, our s
 `$ docker service create --name ig_secrets --secret mysecret --publish published=8080,target=8080 forgerock/ig`
 - Copy your IG folder from Docker host to container, example:
 `$ docker cp /path_to_ig/.openig/. <container_name>:/var/openig/.`
-- Run your container in interactive mode: ` docker exec -it <docker_container_sha1> sh`
-- View the Docker secret under `/run/secret/mysecret`
+- Run your container in interactive mode: `$ docker exec -it <docker_container_sha1> sh`
+- View the Docker secret under `less /run/secret/mysecret`
 - Access to the container from your host: `http://<Host IP>:8080/hello`
 
 ![Hello Running](https://raw.githubusercontent.com/openig-contrib/script-util-for-openig/master/media/hello.png)
