@@ -9,6 +9,7 @@ What does IG do? What can I do with IG?
 ----------------------------- 
 
 * [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)_(scripts and utilities)_
+* [Docker Secrets and IG Secrets](https://github.com/openig-contrib/script-util-for-openig/tree/master/docker))
 <br><br>
 * [OAuth2: NASCAR page - Authenticate through AM, Google, MSN or LinkedIn](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
 * [OAuth2: Discovery](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)

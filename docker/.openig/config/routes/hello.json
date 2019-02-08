@@ -1,0 +1,24 @@
+{
+	"secrets": {
+		"stores": [ {
+        "type": "FileSystemSecretStore",
+        "config": {
+          "directory": "/run/secrets",
+          "format": "PLAIN"
+        }
+      }]
+	},
+	"handler": {
+		"name": "myScriptableHandler",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"args": {
+				"secretService": "${heap['SecretsService']}"
+			},
+           "file": "hello.groovy"
+		}
+	},
+	"condition": "${matches (request.uri.path, '^/hello')}",
+	"timer": true
+}
