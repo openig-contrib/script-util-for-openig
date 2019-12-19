@@ -1,9 +1,9 @@
-Forgerock Identity Gateway amazing route samples!
+Forgerock Identity Gateway amazing route examples!
 ======
 
-This repository contains short and simple routes for [**Forgerock Identity Gateway(IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
+This repository contains short and simple routes for [**Forgerock Identity Gateway (IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
 
-An install of [**Forgerock Access Management(AM)**](https://backstage.forgerock.com/downloads/OpenAM/Access%20Management/5.1.1/AM%20Zip/zip#list) is also required to perform authentication/authorization examples. 
+An install of [**Forgerock Access Management (AM)**](https://backstage.forgerock.com/downloads/OpenAM/Access%20Management/5.1.1/AM%20Zip/zip#list) is also required to perform authentication/authorization examples. 
 
 What does IG do? What can I do with IG?
 ----------------------------- 
@@ -43,10 +43,10 @@ Each folder contains Groovy scripts which are configuring AM via REST: configure
 
 Official links
 -----------------------------
-* [Get Forgerock Identity Gateway(IG)!](https://www.forgerock.com/platform/identity-gateway/)
-* [Get Forgerock Access Management(AM)!](https://www.forgerock.com/platform/access-management/)
+* [Get Forgerock Identity Gateway IG](https://www.forgerock.com/platform/identity-gateway/)
+* [Get Forgerock Access Management AM](https://www.forgerock.com/platform/access-management/)
 * [IG JIRA](https://bugster.forgerock.org/jira/browse/OPENIG)
-* [Forgerock](https://www.forgerock.com/platform/identity-gateway/)
+* [Forgerock official website](https://www.forgerock.com/platform/identity-gateway/)
 
 
 Disclaimer
