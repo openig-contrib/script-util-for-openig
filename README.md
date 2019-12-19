@@ -38,6 +38,7 @@ How to configure OpenAM??? I just want to try...
 **Don't panic!**
 
 There are Groovy scripts provided for each example to help you to configure your AM quickly. 
+Each folder contains Groovy scripts which are configuring AM via REST: configure OAuth2Provider, Policies, Identities and so on...
 <br>
 
 Official links
