@@ -1,4 +1,4 @@
-OPENIG-712 Improve 'supportedDomains' experience in OAuth2-OIDC
+OPENIG-712 Improve 'supportedDomains' experience with OAuth2/OpenID Connect
 ======
 ----------
 
