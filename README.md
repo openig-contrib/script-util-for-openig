@@ -1,7 +1,7 @@
-Forgerock Identity Gateway amazing route examples!
+Forgerock Identity Gateway route examples!
 ======
 
-This repository contains short and simple routes for [**Forgerock Identity Gateway (IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
+This repository contains short and simple routes ready to deploy for [**Forgerock Identity Gateway (IG)**](https://backstage.forgerock.com/downloads/OpenIG#browse)
 
 An install of [**Forgerock Access Management (AM)**](https://backstage.forgerock.com/downloads/) is required to perform authentication/authorization examples. 
 
