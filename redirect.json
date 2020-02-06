@@ -1,0 +1,23 @@
+{
+  "handler": {
+    "type": "Chain",
+    "config": {
+      "filters": [{
+        "type": "HeaderFilter",
+        "config": {
+          "messageType": "RESPONSE",
+          "add": {
+            "Location": ["http://www.forgerock.com"]
+          }
+        }
+      }],
+      "handler": {
+        "type": "StaticResponseHandler",
+        "config": {
+          "status": 302
+        }
+      }
+    }
+  },
+  "condition": "${matches (request.uri.path, '^/redirect')}"
+}
