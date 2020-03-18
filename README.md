@@ -24,6 +24,7 @@ What does IG do? What can I do with IG?
 * [UMA 2.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 <br><br>
 * [JwtBuilderFilter(6.1): Passdown AM user information from IG into a header](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/JwtBuilderFilter)
+* [Create a simple redirect route](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/Redirect)
 * [User Profile: Retrieve user information from AM](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/UserProfile)
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
