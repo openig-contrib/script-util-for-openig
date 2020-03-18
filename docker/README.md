@@ -6,7 +6,7 @@ container(s) and the Docker Secrets are exposed in flat files accessible in the 
 As there is no way to define a specific encryption for the Docker Secrets, our secrets management with flat files
 (using a FileSystemSecretStore) is enough to insure compatibility with Docker Secrets and IG Secrets.
 
-**STEP-1**: Retrieve latest IG Docker image: `docker pull forgerock-docker-public.bintray.io/forgerock/ig:latest`
+**STEP-1**: Retrieve latest IG Docker image: `docker pull gcr.io/forgerock-io/ig/docker-build`
 
 **STEP-2**: Copy the folder `.openig` where the hello.json route and script are available.
   
