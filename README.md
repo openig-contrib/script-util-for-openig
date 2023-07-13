@@ -11,9 +11,6 @@ What does IG do? What can I do with IG?
 * [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)_(scripts and utilities)_
 * [Docker Secrets and IG Secrets](https://github.com/openig-contrib/script-util-for-openig/tree/master/docker)
 <br><br>
-* [OAuth2: NASCAR page - Authenticate through AM, Google, MSN or LinkedIn](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
-* [OAuth2: Discovery](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-712)
-* [OAuth2/OpenID: Authenticate through AM, check the token and get access to your protected application!](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/OPENIG-933)
 * [OAuth2/OpenID: Authenticate using private_key_jwt](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/private_key_jwt)
 <br><br>
 * [Policy Enforcement Filter(PEF): how to retrieve attributes in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
