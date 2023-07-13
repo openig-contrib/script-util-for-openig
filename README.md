@@ -13,16 +13,7 @@ What does IG do? What can I do with IG?
 <br><br>
 * [OAuth2/OpenID: Authenticate using private_key_jwt](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/private_key_jwt)
 <br><br>
-* [Policy Enforcement Filter(PEF): how to retrieve attributes in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-824)
-* [Policy Enforcement Filter(PEF): how to set environment and retrieve advices in a policy decision](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/OPENIG-836)
-* [Policy Enforcement Filter(PEF): configure AM as a PDP](https://github.com/openig-contrib/script-util-for-openig/tree/master/PEP/Setting_Up_OpenAM_As_A_PDP.groovy) _(groovy script only)_
-<br><br>
-* [UMA 1.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
-* [UMA 2.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
-<br><br>
 * [Create a simple redirect route](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/Redirect)
-<br><br>
-* [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
 > **Note: that IG is now launched in PRODUCTION MODE by default**<br>
 Don't forget to change it to DEVELOPMENT to access Studio or for editing routes.
