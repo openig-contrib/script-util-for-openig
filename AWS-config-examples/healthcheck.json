@@ -5,6 +5,6 @@
       "status": 200
     }
   },
-  "condition": "${matches(request.uri.path, '^/healthcheck')}",
+  "condition": "${find(request.uri.path, '^/healthcheck')}",
   "capture": "all"
 }
