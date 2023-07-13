@@ -1,5 +1,83 @@
 {
 	"heap": [{
+		"name": "SystemAndEnvSecretStore-1",
+		"type": "SystemAndEnvSecretStore"
+	}, {
+		"name": "AuthenticatedRegistrationHandler-1",
+		"type": "Chain",
+		"config": {
+			"filters": [
+				{
+					"name": "ClientSecretBasicAuthenticationFilter-1",
+					"type": "ClientSecretBasicAuthenticationFilter",
+					"config": {
+						"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['agentName']}",
+						"clientSecretId": "oidc.secret.id",
+						"secretsProvider": "SystemAndEnvSecretStore-1"
+					}
+				}
+			],
+			"handler": "ForgeRockClientHandler"
+		}
+	}, {
+		"name": "amPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "openam",
+			"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['agentName']}",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			],
+			"tokenEndpointAuthMethod": "client_secret_basic",
+			"authenticatedRegistrationHandler": "AuthenticatedRegistrationHandler-1",
+			"secretsProvider": "SystemAndEnvSecretStore-1"
+		}
+	}, {
+		"name": "googlePortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "google",
+			"clientId": "google-client",
+			"scopes": [
+				"openid", "profile", "address", "phone"
+			],
+			"secretsProvider": "SystemAndEnvSecretStore-1"
+		},
+		"authenticatedRegistrationHandler": "AuthenticatedRegistrationHandler-1"
+	}, {
+		"name": "msnPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "msn",
+			"clientId": "msn-client",
+			"scopes": [
+				"wl.basic", "wl.signin"
+			],
+			"tokenEndpointAuthMethod": "client_secret_post",
+			"secretsProvider": "SystemAndEnvSecretStore-1"
+		},
+		"authenticatedRegistrationHandler": "AuthenticatedRegistrationHandler-1"
+	}, {
+		"name": "linkedinPortal",
+		"type": "ClientRegistration",
+		"config": {
+			"issuer": "linkedin",
+			"clientId": "linkedin-client",
+			"scopes": [
+				"r_basicprofile", "r_emailaddress", "rw_company_admin", "w_share"
+			],
+			"tokenEndpointAuthMethod": "client_secret_post",
+			"secretsProvider": "SystemAndEnvSecretStore-1"
+		},
+		"authenticatedRegistrationHandler": "AuthenticatedRegistrationHandler-1"
+	}, {
+		"name": "NascarPage",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "forgeshop-nascarpage.html.groovy"
+		}
+	}, {
 		"name": "dispatcher",
 		"type": "DispatchHandler",
 		"config": {
@@ -21,10 +99,11 @@
 									],
 									"redirect_uris": ["${readProperties(system['user.home'].concat('/openig.properties'))['redirectionUri']}"]
 								},
-								"registrations": ["openamPortal", "googlePortal", "msnPortal", "linkedinPortal"],
+								"registrations": ["amPortal", "googlePortal", "msnPortal", "linkedinPortal"],
 								"requireHttps": false,
 								"requireLogin": true,
-								"target": "${attributes.openid}"
+								"target": "${attributes.openid}",
+								"cacheExpiration": "disabled"
 							}
 						}],
 						"handler": "display-user-info-groovy-handler"
@@ -32,61 +111,7 @@
 				}
 			}]
 		}
-	}, {
-		"name": "openamPortal",
-		"type": "ClientRegistration",
-		"config": {
-			"issuer": "openam",
-			"clientId": "${readProperties(system['user.home'].concat('/openig.properties'))['agentName']}",
-			"clientSecret": "${readProperties(system['user.home'].concat('/openig.properties'))['agentPassword']}",
-			"scopes": [
-				"openid", "profile", "address", "phone"
-			],
-			"tokenEndpointAuthMethod": "client_secret_basic"
-		}
-	}, {
-		"name": "googlePortal",
-		"type": "ClientRegistration",
-		"config": {
-			"issuer": "google",
-			"clientId": "<your_google_client_id>",
-			"clientSecret": "<your_google_client_secret>",
-			"scopes": [
-				"openid", "profile", "address", "phone"
-			]
-		}
-	}, {
-		"name": "msnPortal",
-		"type": "ClientRegistration",
-		"config": {
-			"issuer": "msn",
-			"clientId": "<your_msn_client_id>",
-			"clientSecret": "<your_msn_client_secret>",
-			"scopes": [
-				"wl.basic", "wl.signin"
-			],
-			"tokenEndpointAuthMethod": "client_secret_post"
-		}
-	}, {
-		"name": "linkedinPortal",
-		"type": "ClientRegistration",
-		"config": {
-			"issuer": "linkedin",
-			"clientId": "<your_linkedin_client_id>",
-			"clientSecret": "<your_linkedin_client_secret>",
-			"scopes": [
-				"r_basicprofile", "r_emailaddress", "rw_company_admin", "w_share"
-			],
-			"tokenEndpointAuthMethod": "client_secret_post"
-		}
-	}, {
-		"name": "NascarPage",
-		"type": "ScriptableHandler",
-		"config": {
-			"type": "application/x-groovy",
-			"file": "forgeshop-nascarpage.html.groovy"
-		}
 	}],
 	"handler": "dispatcher",
-	"condition": "${matches(request.uri.path, '^/openid')}"
+	"condition": "${find(request.uri.path, '^/openid')}"
 }
