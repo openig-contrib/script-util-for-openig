@@ -40,5 +40,5 @@
 		}
 	}],
 	"handler": "dispatcher",
-	"condition": "${matches(request.uri.path, '^/openid')}"
+	"condition": "${find(request.uri.path, '^/openid')}"
 }
