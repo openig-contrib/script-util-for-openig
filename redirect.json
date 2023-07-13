@@ -19,5 +19,5 @@
       }
     }
   },
-  "condition": "${matches (request.uri.path, '^/redirect')}"
+  "condition": "${find(request.uri.path, '^/redirect')}"
 }
