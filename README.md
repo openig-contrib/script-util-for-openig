@@ -8,7 +8,7 @@ An install of [**Forgerock Access Management (AM)**](https://backstage.forgerock
 What does IG do? What can I do with IG?
 ----------------------------- 
 
-* [AWS: Deploy OpenIG with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)_(scripts and utilities)_
+* [AWS: Deploy old IG war with Amazon Web Services](https://github.com/openig-contrib/script-util-for-openig/tree/master/AWS-config-examples)_(scripts and utilities)_
 * [Docker Secrets and IG Secrets](https://github.com/openig-contrib/script-util-for-openig/tree/master/docker)
 <br><br>
 * [OAuth2/OpenID: Authenticate using private_key_jwt](https://github.com/openig-contrib/script-util-for-openig/tree/master/OAuth2/private_key_jwt)
@@ -20,9 +20,7 @@ What does IG do? What can I do with IG?
 * [UMA 1.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 * [UMA 2.0](https://github.com/openig-contrib/script-util-for-openig/tree/master/UMA) _(groovy script only)_
 <br><br>
-* [JwtBuilderFilter(6.1): Passdown AM user information from IG into a header](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/JwtBuilderFilter)
 * [Create a simple redirect route](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/Redirect)
-* [User Profile: Retrieve user information from AM](https://github.com/openig-contrib/script-util-for-openig/tree/master/Others/UserProfile)
 <br><br>
 * [STS: transform OAuth2/OpenID to SAML assertions!](https://github.com/openig-contrib/script-util-for-openig/tree/master/STS/TokenTransformationFilter)
 
