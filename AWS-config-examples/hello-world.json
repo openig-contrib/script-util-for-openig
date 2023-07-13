@@ -7,6 +7,6 @@
       "file": "hello-world.groovy"
     }
   },
-  "condition": "${matches(request.uri.path, '^/hello-world')}",
+  "condition": "${find(request.uri.path, '^/hello-world')}",
   "capture": "all"
 }
